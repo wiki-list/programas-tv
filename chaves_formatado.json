@@ -1267,10 +1267,10 @@
       "original_title": "El amor llegó a la vecindad - parte 1",
       "episode_order_number": "85",
       "id": "0000000000085",
-      "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/nyypMzg9COk/maxresdefault.jpg",
+      "cover": "https://img.youtube.com/vi/nyypMzg9COk/maxresdefault.jpg",
       "time": "23",
       "enabled": true,
-      "exibicao": "SBT REDE",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "17/05/2025"
       ]
@@ -2741,10 +2741,10 @@
       "original_title": "FESTIVAL DE LA BUENA VENCIDAD IV",
       "episode_order_number": "213",
       "id": "20250807_XXX",
-      "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/r6d9KzeW0qs/mqdefault.jpg",
+      "cover": "https://img.youtube.com/vi/r6d9KzeW0qs/mqdefault.jpg",
       "time": "20",
       "enabled": true,
-      "exibicao": "SBT REDE",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "08/07/2025"
       ]
@@ -4477,7 +4477,7 @@
       "original_title": "",
       "episode_order_number": "188",
       "id": "20250626_XXX",
-      "cover": "https://i.ibb.co/kstTRFLd/20250410-149.jpg",
+      "cover": "https://img.youtube.com/vi/Vl4Pj6eTzPk/mqdefault.jpg",
       "time": "21",
       "enabled": true,
       "exibicao": "SBT REDE | +SBT",
@@ -4805,7 +4805,7 @@
       "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/BhMCqvWwSjM/maxresdefault.jpg",
       "time": "",
       "enabled": false,
-      "exibicao": "",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "28/03/2026"
       ]
