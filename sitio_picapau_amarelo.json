@@ -1,0 +1,668 @@
+[
+  {
+    "temporada": 1,
+    "ano": "2001",
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 1,
+        "titulo": "Reino das Águas Claras",
+        "ancine": "No Reino das Águas Claras",
+        "exibicao_original": "12 de outubro de 2001 - 19 de outubro de 2001",
+        "capitulos": 6,
+        "descricao": "Narizinho conhece Príncipe Escamado e visita o Reino das Águas Claras enquanto Pedrinho se prepara para ir passas as férias no Sítio. Emília toma a pílula falante de Doutor Caramujo e começa a falar. Nesse episódio, também somos apresentados a Dona Carochinha e ao Pequeno Polegar. Narizinho e Pedrinho fazem o Visconde de Sabugosa e acontecem dois casamentos: o de Emília com Rabicó e o de Narizinho com o Príncipe Escamado.",
+        "nota": "Episódio reprisado em 17 de dezembro a 21 de dezembro de 2001 , em 5 capítulos."
+      },
+      {
+        "ep_t": 2,
+        "ep_s": 2,
+        "titulo": "O Saci",
+        "ancine": "O Saci",
+        "exibicao_original": "22 de outubro de 2001 - 26 de outubro de 2001",
+        "capitulos": 5,
+        "descricao": "Cuca transforma Narizinho em pedra. Pedrinho faz amizade com Saci e explora o Capoeirão com seu novo amigo. Dona Benta se preocupa com o sumiço dos netos. Pedrinho descobre que Narizinho virou pedra e, com a ajuda do Saci, salva a prima.",
+        "nota": "Episódio reprisado em 24 de dezembro a 28 de dezembro de 2001 ."
+      },
+      {
+        "ep_t": 3,
+        "ep_s": 3,
+        "titulo": "Caçadas de Pedrinho",
+        "ancine": "As Caçadas de Pedrinho",
+        "exibicao_original": "29 de outubro de 2001 - 2 de novembro de 2001",
+        "capitulos": 5,
+        "descricao": "A Turma do Sítio descobre que caçadores estão na mata caçando onça e fazem de tudo para atrapalhar as suas caçadas. Um rinoceronte foge do circo após cansar de ser maltratado pelo dono, e Emília decide ajudar o animal. No final, a boneca dá para ele o nome de Quindim.",
+        "nota": "Episódio reprisado em 31 de dezembro de 2001 a 4 de janeiro de 2002 ."
+      },
+      {
+        "ep_t": 4,
+        "ep_s": 4,
+        "titulo": "Reinações de Narizinho",
+        "ancine": "Reinações de Narizinho",
+        "exibicao_original": "5 de novembro de 2001 - 9 de novembro de 2001",
+        "capitulos": 5,
+        "descricao": "O Reino das Águas Claras decide fazer uma visita ao Sítio do Picapau Amarelo. Após muitas confusões, eles vão embora depois da morte de Miss Sardine. Depois, um gato aparece no Sítio e começa a comer os pintos de Dona Benta. Visconde tenta descobrir o culpado disso.",
+        "nota": "Episódio reprisado em 7 de janeiro a 11 de janeiro de 2002 ."
+      },
+      {
+        "ep_t": 5,
+        "ep_s": 5,
+        "titulo": "Viagem ao País das Fábulas",
+        "ancine": "Viagem ao País das Fábulas",
+        "exibicao_original": "12 de novembro de 2001 - 16 de novembro de 2001",
+        "capitulos": 5,
+        "descricao": "Pedrinho conhece um menino invisível que leva ele e a turma ao País das Fábulas. Lá, eles conhecem La Fountaine e o Burro Falante, que decide ir morar no Sítio. Depois, eles tentam voltar ao País das Fábulas com Dona Benta a fim de que ela conheça La Foutaine, porém, eles vão parar em outro lugar, e Visconde é raptado pelo Pássaro Roca.",
+        "nota": "Episódio reprisado em 14 de janeiro a 18 de janeiro de 2002 ."
+      },
+      {
+        "ep_t": 6,
+        "ep_s": 6,
+        "titulo": "Festa do Faz de Conta",
+        "ancine": "A Festa do Faz-de-Conta",
+        "exibicao_original": "19 de novembro de 2001 - 23 de novembro de 2001",
+        "capitulos": 5,
+        "descricao": "A Turma do Sítio faz uma festa para os personagens do Reino da Fantasia. Depois, após ouvir a história de Pinóquio, Pedrinho decide fazer o clone do Pinóquio: João Faz-de-conta, porém, ele é enganado por Emília. O episódio termina com Pedrinho construindo um circo no Sítio: O Circo de Escavalinhos.",
+        "nota": "Episódio reprisado em 21 de janeiro a 25 de janeiro de 2002 ."
+      },
+      {
+        "ep_t": 7,
+        "ep_s": 7,
+        "titulo": "Viagem ao Céu",
+        "ancine": "Viagem ao Céu",
+        "exibicao_original": "26 de novembro de 2001 - 30 de novembro de 2001",
+        "capitulos": 5,
+        "descricao": "A Turma decide ir à Lua e levam Tia Nastácia sem que ela saiba. Depois, eles decidem explorar o Espaço Sideral, e acabam encontrando um anjo com a asa quebrada. Emília dá o nome de Flor das Alturas pro anjo e o leva pra Terra. Chegando na Terra, Pedrinho e Narizinho convidam crianças inglesas para conhecerem o anjo. Elas vão, mas a Turma tenta enganá-los, disfarçando Visconde de anjo para que eles não tenham que mostrar o verdadeiro anjinho.",
+        "nota": "Episódio reprisado em 28 de janeiro a 1 de fevereiro de 2002 ."
+      },
+      {
+        "ep_t": 8,
+        "ep_s": 8,
+        "titulo": "Reforma da Natureza",
+        "ancine": "A Reforma da Natureza",
+        "exibicao_original": "3 de dezembro de 2001 - 14 de dezembro de 2001",
+        "capitulos": 10,
+        "descricao": "Na primeira parte do episódio, Emília decide reformar a natureza após ficar sozinha no Sítio. Ela chama sua amiga Magrela para ajudá-la. Pedrinho, Narizinho e Rabicó são sequestrados pela Cuca. Na segunda parte do episódio, é a vez do Visconde reformar a natureza. Ele altera algumas glândulas em alguns insetos, que fazem eles crescerem e ficarem gigantes, aterrorizando o mundo todo.",
+        "nota": "Episódio reprisado em 4 de fevereiro a 15 de fevereiro de 2002 ."
+      },
+      {
+        "ep_t": 9,
+        "ep_s": 9,
+        "titulo": "O Picapau Amarelo",
+        "ancine": "O Picapau Amarelo",
+        "exibicao_original": "18 de fevereiro de 2002 - 1 de março de 2002",
+        "capitulos": 10,
+        "descricao": "Os personagens do Reino da Fantasia se mudam para o Sítio, pois estão cansados de viver sempre as mesmas histórias sob a ditadura de Dona Carochinha. No Sítio, Branca de Neve se separa de seu príncipe. Então, Emília tem a ideia de juntá-la com o Príncipe Codadade, para que eles se casem. Capitão Gancho tenta tomar o Sítio.",
+        "nota": null
+      },
+      {
+        "ep_t": 10,
+        "ep_s": 10,
+        "titulo": "Dom Quixote das Crianças",
+        "ancine": "Dom Quixote das Crianças",
+        "exibicao_original": "4 de março de 2002 - 8 de março de 2002",
+        "capitulos": 5,
+        "descricao": "Ênio, sobrinho de Coronel Teodorico, vai passar uns dias na fazenda do tio. Cuca faz uma poção para Pedrinho e pede para Saci jogar nele. Saci, porém, altera a poção e joga em Ênio, fazendo com que o menino se transforme nos personagens dos livros que ele lê. Por causa disso, Cuca denuncia Saci, e ele é posto em julgamento por ser amigo de Pedrinho. Ao mesmo tempo, Dona Benta lê a história de Dom Quixote para a Turma.",
+        "nota": null
+      },
+      {
+        "ep_t": 11,
+        "ep_s": 11,
+        "titulo": "O Minotauro",
+        "ancine": "O Minotauro",
+        "exibicao_original": "11 de março de 2002 - 15 de março de 2002",
+        "capitulos": 5,
+        "descricao": "Tia Nastácia é sequestrada pelo Minotauro e a Turma do Sítio vai até a Grécia Antiga salvá-la. Cuca fica do bem após Saci curá-la de um resfriado.",
+        "nota": null
+      },
+      {
+        "ep_t": 12,
+        "ep_s": 12,
+        "titulo": "Memórias de Emília",
+        "ancine": "Memórias de Emília",
+        "exibicao_original": "18 de março de 2002 - 22 de março de 2002",
+        "capitulos": 5,
+        "descricao": "Emília obriga Visconde a escrever suas memórias. Juntos, eles lembram de diversas aventuras, e Emília inventa algumas também. Ao mesmo tempo, um homem chamado Mário Machado aparece no Sítio dizendo ser escritor, mas ele quer mesmo é roubar Dona Benta.",
+        "nota": null
+      },
+      {
+        "ep_t": 13,
+        "ep_s": 13,
+        "titulo": "Os XII Trabalhos de Hércules",
+        "ancine": "Os Doze Trabalhos de Hércules",
+        "exibicao_original": "25 de março de 2002 - 19 de abril de 2002",
+        "capitulos": 20,
+        "descricao": "A Turma vai até a Grécia Antiga ajudar Hércules a cumprir seus doze trabalhos.",
+        "nota": null
+      },
+      {
+        "ep_t": 14,
+        "ep_s": 14,
+        "titulo": "O Poço do Visconde",
+        "ancine": "O Poço do Visconde",
+        "exibicao_original": "22 de abril de 2002 - 26 de abril de 2002",
+        "capitulos": 5,
+        "descricao": "Visconde começa a estudar geologia e, com a ajuda da Turma, abre um poço de petróleo no Sítio. O que eles não sabem é que o petróleo é falso. É apenas um feitiço da Cuca, que ficou brava após eles tentarem abrir o poço em cima de sua caverna. Enquanto isso, Quindim leva um choque e fica falando apenas em inglês.",
+        "nota": null
+      },
+      {
+        "ep_t": 15,
+        "ep_s": 15,
+        "titulo": "Histórias Diversas",
+        "ancine": "Histórias Diversas",
+        "exibicao_original": "29 de abril de 2002 - 10 de maio de 2002",
+        "capitulos": 10,
+        "descricao": "Na primeira parte do episódio, diversas aventuras acontecem. Primeiro, Visconde inventa o Psicocaptador Sabugosa, uma máquina capaz de ler pensamentos e sonhos das pessoas e animais. Depois, Narizinho descobre que Príncipe Escamado será obrigado a casar com a Enguia Maria. Ela e Pedrinho pescam a enguia, que é devorada pelo Gato de Botas. Ele está lá para participar de uma festa que Branca de Neve vai dar no Sítio. Na segunda parte do episódio, Tia Nastácia faz um clone do Visconde: o Visclone, para que Emília possa trocar ele por seis ninfas da Deusa Flora, na Grécia. Visclone, ao contrário do Visconde, não é inteligente e, quando Flora percebe que foi enganada, vai ao Sítio atrás de suas ninfas de volta. Enquanto isso, Pedrinho e Narizinho assistem os ensaios da peça Romeu e Julieta.",
+        "nota": null
+      },
+      {
+        "ep_t": 16,
+        "ep_s": 16,
+        "titulo": "As Aventuras de Hans Staden",
+        "ancine": "Aventuras de Hans Staden",
+        "exibicao_original": "13 de maio de 2002 - 17 de maio de 2002",
+        "capitulos": 5,
+        "descricao": "Conselheiro lê o livro de Hans Staden para Pedrinho e Narizinho. Emília decide abrir seu museu no Sítio. Dona Benta tenta impedir que Nicolau, um empresário, derrube um casarão centenário para construir um posto de gasolina no local. Cuca troca de voz com Tia Nastácia acidentalmente.",
+        "nota": null
+      },
+      {
+        "ep_t": 17,
+        "ep_s": 17,
+        "titulo": "História das Invenções",
+        "ancine": "História das Invenções",
+        "exibicao_original": "20 de maio de 2002 - 24 de maio de 2002",
+        "capitulos": 5,
+        "descricao": "A Turma decide fazer uma feira de ciências no Sítio e várias crianças participam, como o Ênio, sobrinho do Coronel Teodorico que volta ao Arraial. Para sabotar a feira de ciências, Cuca se transforma em uma criança chamada Keka. Ela quer transformar as outras crianças em pedra. Emília leva Santos Dumont e Leonardo da Vinci para o Sítio.",
+        "nota": null
+      },
+      {
+        "ep_t": 18,
+        "ep_s": 18,
+        "titulo": "Peter Pan",
+        "ancine": "Peter Pan",
+        "exibicao_original": "27 de maio de 2002 - 31 de maio de 2002",
+        "capitulos": 5,
+        "descricao": "Peter Pan leva a Turma para a Terra do Nunca como presente de aniversário da Emília. No Sítio, Conselheiro e Visconde levam as crianças do Arraial ao Capoeirão para comemorarem o Dia do Folclore.",
+        "nota": null
+      },
+      {
+        "ep_t": 19,
+        "ep_s": 19,
+        "titulo": "Histórias de Tia Nastácia",
+        "ancine": "Histórias de Tia Nastácia",
+        "exibicao_original": "3 de junho de 2002 - 7 de junho de 2002",
+        "capitulos": 5,
+        "descricao": "Quando Tia Nastácia se recusa a contar a história da Cuca, a bruxa faz um feitiço para que todos os personagens das histórias que a cozinheira contar venham para o Mundo Real. A coisa fica pior quando Emília pede para Tia Nastácia contar a história do Bicho Manjaléu. A Turma prepara uma festa junina no Sítio.",
+        "nota": null
+      },
+      {
+        "ep_t": 20,
+        "ep_s": 20,
+        "titulo": "Fábulas",
+        "ancine": "Fábulas",
+        "exibicao_original": "10 de junho de 2002 - 14 de junho de 2002",
+        "capitulos": 5,
+        "descricao": "A Turma volta ao País das Fábulas e, lá, eles gravam algumas fábulas com uma câmera. Depois, eles levam La Foutaine pro Sítio para que ele, junto com Dona Benta, possam comentar as fábulas que foram gravadas. Ao mesmo tempo, Cuca faz o Espantalho do Sítio ganhar vida, e ele aterroriza Tia Nastácia e Tio Barnabé.",
+        "nota": null
+      },
+      {
+        "ep_t": 21,
+        "ep_s": 21,
+        "titulo": "A Volta ao Reino das Águas Claras",
+        "ancine": "Volta ao Reino das Águas Claras",
+        "exibicao_original": "17 de junho de 2002 - 21 de junho de 2002",
+        "capitulos": 5,
+        "descricao": "Príncipe Escamado convida o pessoal do Sítio para visitar o Reino das Águas Claras. Enquanto isso, Cuca se disfarça de uma veterinária chamada Jaqueline para enfeitiçar Coronel Teodorico. É nesse episódio que Visconde cresce após fermento cair nele.",
+        "nota": null
+      },
+      {
+        "ep_t": 22,
+        "ep_s": 22,
+        "titulo": "Perigo no Reino das Águas Claras",
+        "ancine": "Perigo no Reino das Águas Claras",
+        "exibicao_original": "24 de junho de 2002 - 26 de junho de 2002",
+        "capitulos": 3,
+        "descricao": "Emília e Pedrinho descobrem que uma fábrica está poluindo o Ribeirão. Então, eles tentam fazer o dono da fábrica parar a poluição. Com o rio poluído, a Turma faz um hospital de peixes no Sítio, para atender todos os peixes que forem atingidos pela poluição, e até a Iara precisa de ajuda. Enquanto isso, Cuca hipnotiza Rabicó, Quindim e Conselheiro para que eles sejam seus escravos.",
+        "nota": null
+      },
+      {
+        "ep_t": 23,
+        "ep_s": 23,
+        "titulo": "O Fantasma do Casarão",
+        "ancine": "O Fantasma do Casarão",
+        "exibicao_original": "27 de junho de 2002 - 3 de julho de 2002",
+        "capitulos": 5,
+        "descricao": "Emanuel, sócio de Nicolau dono do casarão centenário, pede ajuda ao pessoal do Sítio após constatar que o casarão está assombrado pelo fantasma de um barão que vivia lá.",
+        "nota": null
+      },
+      {
+        "ep_t": 24,
+        "ep_s": 24,
+        "titulo": "As Caçadas do Barão de Munchausen",
+        "ancine": "As Caçadas do Barão de Munchausen",
+        "exibicao_original": "4 de julho de 2002 - 11 de julho de 2002",
+        "capitulos": 6,
+        "descricao": "Barão de Munchausen vai ao Sítio e decide que quer caçar no Capoeirão. Pedrinho, Visconde e Saci tentam impedí-lo. Enquanto isso, uma anjinha chamada Florinda cai no Sítio. Narizinho e Emília chamam Peter Pan para ensiná-la a voar.",
+        "nota": null
+      },
+      {
+        "ep_t": 25,
+        "ep_s": 25,
+        "titulo": "Memórias do Picapau Amarelo",
+        "ancine": "Memórias do Picapau Amarelo",
+        "exibicao_original": "15 de julho de 2002 - 30 de agosto de 2002",
+        "capitulos": 35,
+        "descricao": "A Turma relembra algumas de suas aventuras, enquanto Visconde escreve tudo. No final do episódio, quando eles terminam de escrever as memórias, a porta da sala abre misteriosamente e eles escutam passos na escada. Esse é o gancho para a segunda temporada.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 2,
+    "ano": "2002",
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 26,
+        "titulo": "O Menino Bruxo",
+        "ancine": "O Menino Bruxo",
+        "exibicao_original": "2 de setembro de 2002 - 19 de setembro de 2002",
+        "capitulos": 14,
+        "descricao": "Esse episódio começa no mesmo ponto que terminou a primeira temporada. A Turma descobre a presença de um menino bruxo no Sítio, que foi mandado pela escola de magia para proteger Narizinho de um feiticeiro chamado Conde Xis Parmesan, que quer casar com Narizinho a força. O esconderijo do feiticeiro é um livro que Dona Benta recebeu recentemente e seu principal feitiço é esconder as pessoas no livro. Enquanto isso, Cuca fica furiosa pois não recebeu o convite para participar da Convenção das Bruxas. Ela quer falar com a presidenta do sindicato das bruxas para saber por que não foi convidada, porém, antes de chegar a presidenta, ela precisa falar com a aranha que é secretária dela.",
+        "nota": null
+      },
+      {
+        "ep_t": 2,
+        "ep_s": 27,
+        "titulo": "A Convenção das Bruxas",
+        "ancine": "A Convenção das Bruxas",
+        "exibicao_original": "20 de setembro de 2002 - 11 de outubro de 2002",
+        "capitulos": 16,
+        "descricao": "Após a derrota de Conde Xis Parmesan, o Menino Bruxo se despede do Sítio, porém, Emília rouba a varinha dele e sem querer transforma Pedrinho em um sapo, o que obriga o Menino Bruxo a ficar no Sítio por mais algum tempo. Para trazer Pedrinho de volta, a Turma conta com a ajuda de Branca de Neve. Enquanto isso, a Convenção das Bruxas começa, e Cuca invade a Convenção para exigir seus direitos da presidenta Morgana. Ela diz que perdoa Cuca caso ela leve um menino para o banquete das bruxas. Cuca sequestra Branca de Neve e Pedrinho para levar à Convenção. A Turma, após descobrir isso, vão salvar os dois com a ajuda de Lua Cheia, a filha de Morgana que não quer seguir os passos malvados da mãe. O episódio termina com Emília explodindo o caldeirão da Convenção, para impedir as bruxas de fazerem um feitiço que iria fazer com que todas as crianças do mundo ficassem doentes ao mesmo tempo. Esse episódio é a primeira aparição de Pesadelo, o assistente da Cuca dado por Morgana para vigiá-la.",
+        "nota": null
+      },
+      {
+        "ep_t": 3,
+        "ep_s": 28,
+        "titulo": "Bruxa Mãe, Bruxa Filha",
+        "ancine": "Bruxa Mãe… Bruxa Filha",
+        "exibicao_original": "14 de outubro de 2002 - 30 de outubro de 2002",
+        "capitulos": 13,
+        "descricao": "Após o fim da Convenção, Lua Cheia leva Morgana para a Caverna da Cuca e foge da mãe, indo se esconder no Sítio. Após Morgana descobrir que sua filha fugiu para o Sítio, ela decide ir disfarçada para lá atrás de sua filha e coloca o Sítio de cabeça para baixo. É nesse episódio que Zé Carijó chega no Sítio.",
+        "nota": null
+      },
+      {
+        "ep_t": 4,
+        "ep_s": 29,
+        "titulo": "O Mapa do Tesouro",
+        "ancine": "O Mapa do Tesouro",
+        "exibicao_original": "31 de outubro de 2002 - 11 de novembro de 2002",
+        "capitulos": 8,
+        "descricao": "O pirata Long John Silver chega ao Capoeirão com seu assistente Billy Osso para procurar um tesouro escondido. Porém, ele perde o mapa, que é engolido por um peixe. Pedrinho acha o mapa dentro do peixe, porém, ele vai passando de mão em mão. Após Visconde bater a cabeça e perder a memória, ele encontra o mapa e esconde em uma almofada que Tia Nastácia fez para o enxoval de Candoca, filha de Teodorico. Porém, há várias almofadas iguais, que foram espalhadas e pegues por várias pessoas diferentes. Então, fica cada vez mais difícil encontrar o mapa. Ao final desse episódio, Cuca faz Pesadelo desaparecer.",
+        "nota": null
+      },
+      {
+        "ep_t": 5,
+        "ep_s": 30,
+        "titulo": "O Cangaceiro Lobisomem",
+        "ancine": "O Cangaceiro Lobisomem",
+        "exibicao_original": "12 de novembro de 2002 - 17 de dezembro de 2002",
+        "capitulos": 26,
+        "descricao": "Itamar, um cangaceiro, chega ao Sítio fugindo de outro cangaceiro chamado Trovoada, pois ele não permite o casamento de Itamar com sua filha Tonica Ventania. Ao mesmo tempo, Candoca chega a casa de seu pai Teodorico após se separar do noivo. Ela vê em Itamar a oportunidade de casar-se e finalmente deixar de ser solteira, porém, Itamar ama Tonica. Já Tonica fica morrendo de ciúmes de Itamar com Candoca. Ao mesmo tempo, um lobisomem aparece no Capoeirão. Itamar é o lobisomem, mas ninguém sabe.",
+        "nota": "Episódio reprisado em 30 de junho a 1 de agosto de 2003 , em 25 capítulos."
+      },
+      {
+        "ep_t": 6,
+        "ep_s": 31,
+        "titulo": "A Pedra Mágica de Tupã",
+        "ancine": "A Pedra Mágica de Tupã",
+        "exibicao_original": "18 de dezembro de 2002 - 27 de dezembro de 2002",
+        "capitulos": 7,
+        "descricao": "Tupã deixa Saci encarregado de tomar conta do Muiraquitã, sua pedra mágica. Os monstros Barba Ruiva, Cabeça de Cuia e Pé de Garrafa descobrem que Tupã deixou a pedra com Saci e se unem a Cuca para roubarem a pedra mágica. Após Cuca confrontar Saci sobre a pedra, ele pede ajuda para Tio Barnabé esconder a pedra. Ele esconde na massa de panetone de Tia Nastácia. Rabicó rouba o panetone e, a partir daí, a pedra mágica é passada de mão em mão entre várias pessoas do Sítio.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 3,
+    "ano": "2003-2004",
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 32,
+        "titulo": "O Extraterrestre",
+        "ancine": "Zumpilion",
+        "exibicao_original": "7 de abril de 2003 - 23 de abril de 2003",
+        "capitulos": 13,
+        "descricao": "Pedrinho volta ao Sítio para passar as férias e, logo na sua chegada, escuta um barulho estranho em direção ao Sítio. O barulho era uma nave extraterrestre, de onde desembarcaram Moby e Dick, capangas de Maldoror. Eles são contrabandeadores de alienígenas raros e pousaram na Terra em busca de um zumpilion filhote, que fugiu para a Terra. A polícia intergalática mandou dois agentes para prenderem os bandidos. Além disso, um menino extraterrestre chamado Badalo viajou clandestinamente na nave dos bandidos para conseguir proteger Zumpilion. Nesse episódio, Pesadelo retorna à caverna da Cuca.",
+        "nota": "Episódio reprisado em 10 de novembro a 21 de novembro de 2003 , em 10 capítulos."
+      },
+      {
+        "ep_t": 2,
+        "ep_s": 33,
+        "titulo": "O Rei Arthur",
+        "ancine": "A Lenda do Rei Arthur",
+        "exibicao_original": "24 de abril de 2003 - 14 de maio de 2003",
+        "capitulos": 15,
+        "descricao": "Após Morgana Le Fay tomar o Reino de Arthur, ele foge com Guinevere, Merlim e Percival para o Sítio. Morgana está atrás da espada Excalibur. A Turma do Sítio vai fazer o possível para proteger o Rei Arthur e impedir Morgana de roubar a espada.",
+        "nota": "Episódio reprisado em 24 de novembro a 5 de dezembro de 2003 , em 10 capítulos."
+      },
+      {
+        "ep_t": 3,
+        "ep_s": 34,
+        "titulo": "A Mula-Sem-Cabeça",
+        "ancine": "O Primo do Carijó",
+        "exibicao_original": "15 de maio de 2003 - 28 de maio de 2003",
+        "capitulos": 10,
+        "descricao": "O primo de Zé Carijó, João Melado, chega ao Sítio com sua filha Berta. Zé Carijó se apaixona por Berta, mas João Melado não quer deixar ela casar. João Melado é um homem esperto e vivido, que sempre consegue passar as pernas nas pessoas, inclusive em Seu Elias e Coronel Teodorico. Joao Melado compra um terreno de Teodorico para morar com Berta, porém, após a descoberta de um suposto ouro nas terras, Teodorico e sua filha Candoca tentam fazer de tudo para expulsá-lo de lá. Enquanto isso, a Turma tenta descobrir a origem da Mula-Sem-Cabeça que apareceu no Capoeirão.",
+        "nota": "Episódio reprisado em 8 de dezembro a 19 de dezembro de 2003 ."
+      },
+      {
+        "ep_t": 4,
+        "ep_s": 35,
+        "titulo": "A Bela e a Fera",
+        "ancine": "A Bela e a Fera",
+        "exibicao_original": "29 de maio de 2003 - 11 de junho de 2003",
+        "capitulos": 10,
+        "descricao": "Fera muda seu castelo para o Capoeirão dos Taquaruçus para que Emília ajude-o a voltar a ser gente. Ele foi enfeitiçado por Dona Carochinha. A barata pede ajuda a Cuca para impedir que Emília o transforme em gente de novo. O plano de Emília é apresentar uma das sobrinhas do Seu Elias, Dulce e Flora, para a Fera, e fazer com que uma delas se apaixone por ele. Porém, quem se apaixona por ele é a terceira sobrinha de Elias chamada Bela.",
+        "nota": "Episódio reprisado em 22 de dezembro de 2003 a 2 de janeiro de 2004 ."
+      },
+      {
+        "ep_t": 5,
+        "ep_s": 36,
+        "titulo": "Juca Pirama",
+        "ancine": "Juca Pirama",
+        "exibicao_original": "12 de junho de 2003 - 19 de junho de 2003",
+        "capitulos": 6,
+        "descricao": "Juca Pirama é capturado por índios canibais. A Turma do Sítio decide ajudá-lo após receberem o pedido de ajuda de Jacira, namorada de Juca Pirama.",
+        "nota": null
+      },
+      {
+        "ep_t": 6,
+        "ep_s": 37,
+        "titulo": "Rapunzel",
+        "ancine": "Rapunzel",
+        "exibicao_original": "20 de junho de 2003 - 27 de junho de 2003",
+        "capitulos": 6,
+        "descricao": "Uma bandida chamada Hermengada chega ao Capoeirão com sua filha Serena, seus jagunços e uma menina que ela roubou da mãe quando era criança, chamada Rapunzel. Serena conhece Coronel Teodorico e, após descobrir que ele é rico, decide seduzí-lo para casar com ele. Um dos jagunços de Hermengada, chamado Otávio, é apaixonado por Rapunzel. Ele se une a Turma do Sítio para salvarem Rapunzel, que foi trancada em uma torre alta pela bandida.",
+        "nota": null
+      },
+      {
+        "ep_t": 7,
+        "ep_s": 38,
+        "titulo": "Os Bandeirantes",
+        "ancine": "Os Bandeirantes",
+        "exibicao_original": "4 de agosto de 2003 - 2 de setembro de 2003",
+        "capitulos": 22,
+        "descricao": "Bartolomeu Bueno aparece no Capoeirão com sua trupe de bandeirantes para explorar a região e levar ouro para Portugal. Para isso, eles sequestram a índia Piracema, para que ela leve-os até onde fica o ouro. A Turma do Sítio salva a índia e, então, Bartolomeu decide invadir o Sítio. Enquanto isso, Gavita, filha de Bartolomeu, acha que o pai não gosta dela por ela ser mulher, enquanto que o filho mais novo de Bartolomeu, chamado Bartolomeuzinho, acha que o pai não gosta dele por ele ainda ser uma criança. Outras histórias acontecem nesse episódio, como o triângulo amoroso de Piracema, Tucuna e Gavita, e a poção do encolhimento de Cuca que atinge Gavita.",
+        "nota": null
+      },
+      {
+        "ep_t": 8,
+        "ep_s": 39,
+        "titulo": "O Sumiço da Emília",
+        "ancine": "O Sumiço da Emília",
+        "exibicao_original": "3 de setembro de 2003 - 1 de outubro de 2003",
+        "capitulos": 21,
+        "descricao": "Dona Carochinha quer roubar o Faz-de-Conta da Emília. Para isso, ela atrai Emília para uma emboscada na caverna da Cuca e rouba o Faz-de-Conta da boneca, fazendo com que ela volte a ser uma boneca sem vida. Candoca, que vai parar na caverna da Cuca, também quer o Faz-de-Conta e, para tê-lo, ela tenta colocar Cuca contra Carochinha. Enquanto isso, o irmão do Louro José, Louro João, que é um papagaio azul, foge para o Sítio, pois dois caçadores (Nicanor e Bacamarte) estão atrás dele. Miloca, irmã mais velha de Candoca, contrata os caçadores para caçarem Quindim, pois Miloca quer iniciar uma criação de rinocerontes.",
+        "nota": null
+      },
+      {
+        "ep_t": 9,
+        "ep_s": 40,
+        "titulo": "O Circo",
+        "ancine": "O Gran Circo Mefistofélico",
+        "exibicao_original": "2 de outubro de 2003 - 7 de novembro de 2003",
+        "capitulos": 27,
+        "descricao": "Um senhor misterioso chamado Berloque aparece no Sítio e, logo que ele chega, a turminha percebe que ele é mágico. Ele, na verdade, é o ex-dono do Circo Mesfistofélico, que chega ao Arraial. O circo agora é comandado por Mefisto e Medéia, que roubaram o circo de Berloque. Medéia mantem Nabila presa em uma caixinha de músicas. Nabila é uma bailarina que é filha de Berloque, e ela é escravizada por Medéia. Enquanto isso, Mefisto hipnotiza os animais do Sítio para fazê-los virarem atração principal do Circo.",
+        "nota": "Episódio reprisado em 15 de junho a 21 de julho de 2004 ."
+      },
+      {
+        "ep_t": 10,
+        "ep_s": 41,
+        "titulo": "O Rodeio",
+        "ancine": "O Rodeio",
+        "exibicao_original": "5 de janeiro de 2004 - 4 de fevereiro de 2004",
+        "capitulos": 23,
+        "descricao": "Polidoro é expulso de uma companhia de rodeios após ser acusador por Wilbert Adams de roubar um troféu. Ele vai para o Sítio. Branca-Flor, namorada de Polidoro, é transformada em pedra por Iara, e a Turma se une para salvá-la.",
+        "nota": null
+      },
+      {
+        "ep_t": 11,
+        "ep_s": 42,
+        "titulo": "A Estrada",
+        "ancine": "A Estrada",
+        "exibicao_original": "5 de fevereiro de 2004 - 26 de fevereiro de 2004",
+        "capitulos": 16,
+        "descricao": "Coronel Timbó Júnior se hospeda na casa de Teodorico. Ele quer que Dona Benta venda o Sítio e o Capoeirão para ele derrubar e construir uma estrada. Dona Benta se recusa. Então, Timbó faz várias coisas para obrigar Dona Benta a vender suas terras, como colocar fogo na mata. Enquanto isso, Iara captura Tia Nastácia para a Cuca em troca de uma poção da beleza. Além disso, uma menina misteriosa chamada Cléo aparece no Sítio, e Pedrinho se apaixona por ela. Badalo volta ao Sítio para levar Zumpilion de volta.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 4,
+    "ano": "2004-2005",
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 43,
+        "titulo": "A Menina da Selva",
+        "ancine": "A Menina da Selva",
+        "exibicao_original": "12 de abril de 2004 - 7 de maio de 2004",
+        "capitulos": 20,
+        "descricao": "Um homem rico chamado PPA encontra no jornal uma menina branca vivendo com os índios, que ele diz ser sua neta que foi perdida quando era um bebê. Ele decide ir atrás da única herdeira. Porém, Amorzinho, a esposa de PPA, não gosta da ideia de ele ter uma herdeira, e vai fazer de tudo para se livrar da garota que mora na Amazônia. Mike Navalha, um caçador, também tem interesse na menina, para que ela o leve até a tribo dela, onde os índios escondem ouro. A Turma do Sítio é chamada para ajudar a proteger a menina de Amorzinho e Mike Navalha.",
+        "nota": null
+      },
+      {
+        "ep_t": 2,
+        "ep_s": 44,
+        "titulo": "D.A.N.C.E.",
+        "ancine": "D.A.N.C.E.",
+        "exibicao_original": "10 de maio de 2004 - 14 de junho de 2004",
+        "capitulos": 26,
+        "descricao": "Uma banda famosa chamada D.A.N.C.E. vai ao Arraial para gravar um videoclipe. Porém, aquela localidade era só um pretesto, pois o Arraial é afastado da cidade. Assim, Elvira, a backing vocal do grupo, com a ajuda de Geninho, seu marido, querem dar um fim na vocalista Diana, para que Elvira tome seu lugar na banda. Além disso, Angico e Zequinha, netos do Coronel Teodorico, chegam ao Arraial tocando o terror. Ao longo do episódio, Elvira se une a Iara e a Cuca para acabarem com Diana.",
+        "nota": null
+      },
+      {
+        "ep_t": 3,
+        "ep_s": 45,
+        "titulo": "A Dama dos Pés de Cabra",
+        "ancine": "A Dama dos Pés de Cabra",
+        "exibicao_original": "22 de julho de 2004 - 18 de agosto de 2004",
+        "capitulos": 20,
+        "descricao": "A Turma do Sítio vai até Portugal para ajudar a Princesa Izabel a ter seus pés humanos de volta. Também vão salvar Argemiro, namorado de Izabel, que está preso na parede da casa de sua mãe, a bruxa Antera. Enquanto isso, Iara transforma Angico e Zequinha em pedra. Cuca os transforma depois em tartarugas.",
+        "nota": null
+      },
+      {
+        "ep_t": 4,
+        "ep_s": 46,
+        "titulo": "Aladim",
+        "ancine": "Aladim",
+        "exibicao_original": "19 de agosto de 2004 - 24 de setembro de 2004",
+        "capitulos": 27,
+        "descricao": "Cuca recebe a missão de capturar Aladim. Ele vai parar no Capoeirão e encontra a lâmpada maravilhosa. A Turma do Sítio tenta proteger Aladim. Ao longo do episódio, o Gênio se une a Cuca e se transforma no vilão da história.",
+        "nota": null
+      },
+      {
+        "ep_t": 5,
+        "ep_s": 47,
+        "titulo": "O Pequeno Samurai",
+        "ancine": "O Pequeno Samurai",
+        "exibicao_original": "27 de setembro de 2004 - 30 de novembro de 2004",
+        "capitulos": 47,
+        "descricao": "Pedrinho encontra um anzol dourado, o que significa que ele é o escolhido para ser o imperador do Império do Sol Nascente. A fada Do-I e os samurais Akio-San e Musashi treinam Pedrinho para que ele esteja pronto pra ser o imperador. Porém, o Kappa (uma espécie de vampiro japonês) chamado Takeshi-San quer o anzol dourado, pois só com o anzol ele consegue pegar a espada do Sol Nascente e, assim, ele conseguiria dominar o império. Takeshi-San transforma Iara e Pesadelo em vampiros para eles o ajudarem. Além disso, alguns bandoleiros acampam no Capoeirão. Eles saqueiam o Arraial e querem pegar o pote de ouro que fica do outro lado do arco-íris. Lagarta, a única mulher do grupo, é subestimada o tempo todo pelos outros bandoleiros, fazendo com que ela queira virar homem.",
+        "nota": null
+      },
+      {
+        "ep_t": 6,
+        "ep_s": 48,
+        "titulo": "Dom Quixote",
+        "ancine": "Dom Quixote das Crianças",
+        "exibicao_original": "3 de janeiro de 2005 - 24 de fevereiro de 2005",
+        "capitulos": 39,
+        "descricao": "Dom Quixote aparece no Sítio e se mete em várias confusões no Arraial e com a Cuca. Zé Carijó bate a cabeça, perde a memória e começa a achar que é Sancho Pança.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 5,
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "ano": "2005",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 49,
+        "titulo": "O Preço do Verdadeiro Amor",
+        "ancine": "O Preço do Verdadeiro Amor",
+        "exibicao_original": "4 de abril de 2005 - 29 de dezembro de 2005",
+        "capitulos": 194,
+        "descricao": "A radialista adolescente Cléo foge da capital de São Paulo e vai parar no Sítio. Ela está cansada de ser explorada pela madrasta Marcela, que só usa a menina para ganhar dinheiro após a morte do pai dela. O advogado Oswaldo Saraiva era amigo do pai de Cléo. Ele possui uma joia que deve entregar para a menina no dia que ela completar 15 anos. Porém, Marcela irá fazer de tudo para colocar a mão na herança de Cléo antes da menina. Oswaldo Saraiva escondeu a joia em uma estatueta de Buda, porém, após ele perder a memória, a joia fica perdida. No Sítio, Cléo conhece e se apaixona por João da Luz, um menino pobre que está fugindo de uma instituição para menores infratores. João da Luz foi preso pela instituição após roubar um pão para comer, e agora foge do assistente social Matosinho, que o maltratava na instituição. Além disso, personagens como Angico e Tetéia irão tentar atrapalhar o romance dos dois. Enquanto isso, outras coisas acontecem no Sítio, como a chegada de Patty Pop e as tentativas de Dona Carochinha de pegar Tambelina, que está escondida no Sítio. Outra história dessa temporada é a separação dos pais de Pedrinho, a alfabetização de adultos no Arraial, a chegada de Máscara Verde e o triângulo amoroso entre Iara, Miss Sardine e Doutor Madeira. Outra história que ficou famosa foi a maldição do lobisomem que Cuca jogou em João da Luz.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 6,
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "ano": "2006",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 50,
+        "titulo": "Entre o Amor e a Promessa",
+        "ancine": "Entre o Amor e a Promessa",
+        "exibicao_original": "3 de abril de 2006 - 14 de dezembro de 2006",
+        "capitulos": 184,
+        "descricao": "Após a inundação do Reino de Lumar, a Princesa Thirza precisa ir até o Reino de Luterra para casar com o Príncipe Théo, que foi prometido para ela quando ainda eram bebês pela Fada Felícia. No entanto, Matilda, a dama de companhia de Thirza, aproveita que os pais da princesa morreram e faz com que sua própria filha Mirtes, se passe por Thirza. Matilda larga a real princesa no Mundo Real. Lá, ela passa por poucas e boas, mas é ajudada pela Turma do Sítio. Matilda, porém, não levou a medalha de Thirza para Luterra, que é a aliança do casamento. Então, ela e Mirtes vão para o Mundo Real atrás da medalha. Thirza sabe que precisa cumprir seu destino, porém, ela precisa decidir entre seu verdadeiro amor, o veterinário Chico Maciel, ou entre a promessa que lhe foi feita, o Príncipe Théo. Enquanto isso, a Turma do Sítio luta contra Valdo Serrão, um fazendeiro que jura que tem um tesouro escondido no Sítio e quer comprar o Sítio para derrubá-lo a todo custo. Ele também vende ilegalmente produtos do Capoeirão. Todas as suas artimanhas são expostas no jornal O Grito do Picapau, escrito e dirigido por Samuel. A filha de Valdo, Clarice, não sabe que o pai destrói a natureza e acredita fielmente que ele é uma boa pessoa. Outra história dessa temporada envolve Flor, uma caipora que voltou ao Capoeirão após anos. Ela está casada com Urbano e tem um filho que é metade humano e metade caipora. Porém, o pai de Flor, Baobá Caipora, não gosta de humanos.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 7,
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "ano": "2007",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 51,
+        "titulo": "O Saci Contra-ataca",
+        "ancine": "O Saci Contra-Ataca",
+        "exibicao_original": "9 de abril de 2007 - 11 de maio de 2007",
+        "capitulos": 25,
+        "descricao": "Cuca quer se consagrar a Rainha das Coisas Feias. Pra isso, ela precisa fazer uma maldade. Ela transforma Narizinho em pedra. Barão de Tremembé chega ao Arraial com a Minerva e se disfarça de Camilo Cascalho para enganar Pedrinho e fazer o menino pegar um Saci para ele. Ele quer ficar rico com o Saci. A Turma do Sítio, com a ajuda do Saci, tenta salvar Narizinho.",
+        "nota": null
+      },
+      {
+        "ep_t": 2,
+        "ep_s": 52,
+        "titulo": "As Invenções do Visconde",
+        "ancine": "As Invenções do Visconde",
+        "exibicao_original": "14 de maio de 2007 - 8 de junho de 2007",
+        "capitulos": 20,
+        "descricao": "Barão e Minerva tentam roubar as invenções do Visconde para ficarem ricos com elas. Enquanto isso, Emília e Narizinho vão à colmeia das abelhas para impedirem elas de declararem guerra contra os humanos. Pedrinho e Visconde protegem o Sítio do cangaceiro Beuzebú Bill.",
+        "nota": null
+      },
+      {
+        "ep_t": 3,
+        "ep_s": 53,
+        "titulo": "O Adorável Abominável",
+        "ancine": "O Adorável Abominável",
+        "exibicao_original": "12 de junho de 2007 - 13 de julho de 2007",
+        "capitulos": 24,
+        "descricao": "Um homem de pedra aparece no Arraial e Emília o esconde no Sítio. Dois agentes chegam atrás dele, achando que ele é um extraterrestre, para estudá-lo. Barão e Minerva tentam passar a perna no povo do Arraial para eles pensarem que existem extraterrestres.",
+        "nota": null
+      },
+      {
+        "ep_t": 4,
+        "ep_s": 54,
+        "titulo": "A Nova Reforma da Natureza",
+        "ancine": "A Nova Reforma da Natureza",
+        "exibicao_original": "16 de julho de 2007 - 10 de agosto de 2007",
+        "capitulos": 20,
+        "descricao": "Emília fica sozinha no Sítio e decide reformar a natureza com a ajuda da boneca Bárbara, que na verdade é Minerva disfarçada. Depois, Visconde cria o transgênio, uma criatura que produz comida de graça. Porém, eles se multiplicam muito e isso se torna um problema.",
+        "nota": null
+      },
+      {
+        "ep_t": 5,
+        "ep_s": 55,
+        "titulo": "Quem Quiser Que Conte Outra",
+        "ancine": "Quem quiser que Conte Outra",
+        "exibicao_original": "13 de agosto de 2007 - 5 de outubro de 2007",
+        "capitulos": 40,
+        "descricao": "Após ficarem cansados de viverem as mesmas histórias, os heróis dos contos de fadas se mudam para o Sítio. Dona Carochinha quer trazer todos de volta e para isso conta com a ajuda dos vilões das histórias.",
+        "nota": null
+      },
+      {
+        "ep_t": 6,
+        "ep_s": 56,
+        "titulo": "O Anjinho da Asa Quebrada",
+        "ancine": "O Anjinho da Asa Quebrada",
+        "exibicao_original": "8 de outubro de 2007 - 7 de dezembro de 2007",
+        "capitulos": 35,
+        "descricao": "A Turma viaja para a Lua para consertar um satélite que foi engolido pelo Dragão de São Jorge e deixou todos na Terra incomunicáveis. Lá, eles encontram um anjinho com a asa quebrada chamado Aleluia e eles levam o anjinho para a Terra. Narizinho pega o videogame de Pedrinho e só perde, fazendo com que o personagem do jogo vá para o Mundo Real ensinar Narizinho a jogar.",
+        "nota": null
+      }
+    ]
+  },
+  {
+    "temporada": 0,
+    "ano": "2001-2004",
+    "thumb": "https://s3.glbimg.com/v1/AUTH_ec8a89f9811b482ea737b9ad112423d6/stgguiaftaprd/Imagens/Imagem/1017.jpg",
+    "episodios": [
+      {
+        "ep_t": 1,
+        "ep_s": 1,
+        "titulo": "Gente Inocente: Sítio do Picapau Amarelo",
+        "ancine": "-",
+        "exibicao_original": "07 de outubro de 2001",
+        "capitulos": 1,
+        "descricao": null,
+        "nota": null
+      },
+      {
+        "ep_t": 2,
+        "ep_s": 2,
+        "titulo": "A Festa da Cuca",
+        "ancine": "-",
+        "exibicao_original": "26 de dezembro de 2001",
+        "capitulos": 1,
+        "descricao": null,
+        "nota": null
+      },
+      {
+        "ep_t": 3,
+        "ep_s": 3,
+        "titulo": "É Natal no Sítio do Picapau Amarelo",
+        "ancine": "Sítio do Picapau Amarelo Especial de Natal",
+        "exibicao_original": "24 de dezembro de 2002",
+        "capitulos": 1,
+        "descricao": null,
+        "nota": null
+      },
+      {
+        "ep_t": 4,
+        "ep_s": 4,
+        "titulo": "Memórias do Picapau Amarelo: É Natal no Sítio do Picapau Amarelo",
+        "ancine": "-",
+        "exibicao_original": "25 de dezembro de 2003",
+        "capitulos": 1,
+        "descricao": null,
+        "nota": null
+      },
+      {
+        "ep_t": 5,
+        "ep_s": 5,
+        "titulo": "Estação Globo: Programas Infantis",
+        "ancine": "-",
+        "exibicao_original": "26 de dezembro de 2004",
+        "capitulos": 1,
+        "descricao": null,
+        "nota": null
+      }
+    ]
+  }
+]

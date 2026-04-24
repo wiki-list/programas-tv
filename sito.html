@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Globo_On_logo.png/250px-Globo_On_logo.png" type="image/x-icon" sizes="128x128"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WIKI SITIO // GLOBO ON 2026 ~</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #0d0d0d;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(90deg, #6a5acd, #8a2be2);
+    text-align: center;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  /* ---------- THEMES ---------- */
+  body.theme-chaves header {
+    background: linear-gradient(90deg, #b58900, #f1c40f); /* amarelo */
+  }
+
+  body.theme-chapolin header {
+    background: linear-gradient(90deg, #7f1d1d, #dc3545);
+  }
+
+  body.theme-chaves .menu {
+    background: #8a6f00; /* amarelo escuro */
+    border: 2px dashed #f9e547; /* amarelo vivo */
+  }
+
+  body.theme-chapolin .menu {
+    background: #722f37;
+    border: 2px dashed #ff6b6b;
+  }
+
+.menu {
+  display: flex;
+  justify-content: flex-start; /* Vamos controlar o alinhamento dos itens */
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1400px;
+  overflow: hidden;
+  flex-wrap: nowrap; /* Não quebrar em linhas */
+  position: relative; /* Para a toggle posicionar absoluto dentro da menu */
+}
+
+  .menu-item {
+    flex: 1;
+    text-align: center;
+  position:relative;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .menu-item:hover,
+  .menu-item.active {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .sub-menu {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid white;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .sub-menu div {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .sub-menu div:hover,
+  .sub-menu div.active {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+  }
+
+  /* ========== FIGURA ========= */
+  .fig {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  body.theme-chaves .fig:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(241, 196, 15, 0.45); /* amarelo */
+  }
+
+  body.theme-chapolin .fig:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4);
+  }
+
+  .fig img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    background-color: #2a2a2a;
+  }
+
+  .fig span {
+    padding: 12px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.9);
+    background: #1a1a1a;
+    display: block;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.4em;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .fig .fig-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+    display: block;
+  }
+
+  .fig .fig-info {
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+    font-family: monospace;
+  }
+
+  .fig .fig-date {
+    font-size: 0.7em;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  section {
+    display: none;
+  }
+
+  section.active {
+    display: block;
+  }
+
+  .search-bar {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 20px auto;
+    max-width: 1400px;
+    display: none;
+  }
+
+  .search-bar.active {
+    display: block;
+  }
+
+  .search-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1em;
+    outline: none;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ========= Botão Voltar ao Topo ========= */
+  #btnTopo {
+    position: fixed;
+    right: 30px;
+    bottom: 100px;
+    z-index: 9999;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .25s ease, transform .25s ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    background-image: linear-gradient(90deg, #f1c40f, #f39c12); /* amarelo */
+  }
+
+  #btnTopo.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #btnTopo:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
+  }
+
+  @media (max-width:600px){
+    #btnTopo {
+      right: 12px;
+      bottom: 16px;
+      width:44px;
+      height:44px;
+    }
+  }
+
+  /* Footer */
+  #mainFooter {
+    background: #111;
+    color: #aaa;
+    font-size: 0.85rem;
+    padding: 16px 20px;
+    text-align: center;
+    border-top: 2px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .footer-left p {
+    margin: 2px 0;
+  }
+
+  .footer-right a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 16px;
+    transition: color 0.3s;
+  }
+
+  .footer-right a:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-right a {
+      margin-left: 0;
+      margin-right: 12px;
+    }
+  }
+
+  /* Não exibido */
+  .fig.nao-exibido img {
+    filter: grayscale(100%) brightness(0.7);
+    opacity: 0.8;
+  }
+  
+.toggle{
+  position:absolute;
+  top:18px;
+  right:20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  color:#fff;
+}
+
+.switch{
+  position:relative;
+  width:46px;
+  height:24px;
+}
+
+.switch input{
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#555;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.slider::before{
+  content:"";
+  position:absolute;
+  height:18px;
+  width:18px;
+  left:3px;
+  top:3px;
+  background:white;
+  border-radius:50%;
+  transition:.3s;
+}
+
+.switch input:checked + .slider{
+  background:#f1c40f;
+}
+
+.switch input:checked + .slider::before{
+  transform:translateX(22px);
+}
+
+.toggle-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+  z-index: 10;
+}
+</style>
+
+
+</head>
+<body class="theme-chaves">
+
+  <header>WIKI SITIO // GLOBO ON 2026 ~ </header>
+
+<div class="menu">
+  <div style="flex:1; display:flex; flex-direction: column;">
+    <div class="menu-item active" data-main="chaves">
+      SÍTIO DO PICAPAU AMARELO (2001)
+    </div>
+    <div class="sub-menu" style="margin-top:8px;">
+      <div data-index="0" class="active">TEMPORADA 1</div>
+      <div data-index="1">TEMPORADA 2</div>
+      <div data-index="2">TEMPORADA 3</div>
+      <div data-index="3">TEMPORADA 4</div>
+      <div data-index="4">TEMPORADA 5</div>
+      <div data-index="5">TEMPORADA 6</div>
+      <div data-index="6">TEMPORADA 7</div>
+      <div data-index="7">ESPECIAIS</div>
+    </div>
+  </div>
+
+  <!-- Toggle fica absoluto no canto direito -->
+  <div class="toggle toggle-menu">
+    <span>Episodificar</span>
+    <label class="switch">
+      <input type="checkbox" id="chkCap" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
+
+<main>
+  <div class="search-bar active" id="searchBar">
+    <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar por título, episódio ou ID...">
+  </div>
+
+  <section id="temporada1" class="active">
+    <div class="grid" id="grid-temporada-1"></div>
+  </section>
+
+  <section id="temporada2">
+    <div class="grid" id="grid-temporada-2"></div>
+  </section>
+
+  <section id="temporada3">
+    <div class="grid" id="grid-temporada-3"></div>
+  </section>
+
+  <section id="temporada4">
+    <div class="grid" id="grid-temporada-4"></div>
+  </section>
+
+  <section id="temporada5">
+    <div class="grid" id="grid-temporada-5"></div>
+  </section>
+
+  <section id="temporada6">
+    <div class="grid" id="grid-temporada-6"></div>
+  </section>
+
+  <section id="temporada7">
+    <div class="grid" id="grid-temporada-7"></div>
+  </section>
+
+  <section id="especiais">
+    <div class="grid" id="grid-especiais"></div>
+  </section>
+</main>
+
+  <!-- Botão voltar ao topo (aparece quando estiver quase no fim da página) -->
+  <button id="btnTopo" aria-label="Voltar ao topo" title="Voltar ao topo">▲</button>
+
+<script>
+/* =========================
+   SELETORES
+   ========================= */
+const subTabs = document.querySelectorAll('.sub-menu div');
+const sections = document.querySelectorAll('main section');
+const searchInput = document.getElementById('searchInput');
+const btnTopo = document.getElementById('btnTopo');
+const chkCap = document.getElementById('chkCap');
+
+const coverDefault = 'https://wiki-ch.github.io/arquivos/sitio_cover.jpg';
+
+/* =========================
+   CONTROLE GLOBAL
+   ========================= */
+let capitularizarAtivo = true;
+let dataOriginal = null;
+
+/* =========================
+   CONTROLE DE ABAS
+   ========================= */
+function mostrarTemporada(index) {
+  sections.forEach(sec => sec.classList.remove('active'));
+  if (sections[index]) sections[index].classList.add('active');
+
+  subTabs.forEach(tab => tab.classList.remove('active'));
+  if (subTabs[index]) subTabs[index].classList.add('active');
+}
+
+subTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => mostrarTemporada(index));
+});
+
+/* =========================
+   DATAS
+   ========================= */
+function avancarDiaUtil(data, diasPermitidos) {
+  const nova = new Date(data);
+  do {
+    nova.setDate(nova.getDate() + 1);
+  } while (!diasPermitidos.includes(nova.getDay()));
+  return nova;
+}
+
+function formatarData(data, hora) {
+  const d = String(data.getDate()).padStart(2, '0');
+  const m = String(data.getMonth() + 1).padStart(2, '0');
+  const y = data.getFullYear();
+  return `${d}/${m}/${y} ${hora}`;
+}
+
+/* =========================
+   LINHA DO TEMPO
+   ========================= */
+let dataExibicaoGlobal;
+let dataRepriseGlobal;
+let contadorCapituloGlobal;
+
+const diasExibicao = [1,2,3,4,5];
+const diasReprise  = [2,3,4,5,6];
+
+function resetTimeline() {
+  dataExibicaoGlobal = new Date('2026-01-12T08:10:00');
+  dataRepriseGlobal  = new Date('2026-01-13T02:00:00');
+  contadorCapituloGlobal = 1;
+}
+
+/* =========================
+   CONTADOR DAS ABAS
+   ========================= */
+function atualizarAbas(data) {
+  subTabs.forEach((tab, idx) => {
+    const temporada = data[idx];
+    if (!temporada) return;
+
+    let total = 0;
+    temporada.episodios.forEach(ep => {
+      const caps = Number(ep.capitulos) || 1;
+      total += capitularizarAtivo ? caps : 1;
+    });
+
+    tab.textContent =
+      idx === 7
+        ? `ESPECIAIS (${total})`
+        : `TEMPORADA ${temporada.temporada} (${total})`;
+  });
+}
+
+/* =========================
+   RENDER GERAL
+   ========================= */
+function renderTudo(data) {
+  resetTimeline();
+
+  data.forEach((temporada, idx) => {
+    const gridId = idx === 7
+      ? 'grid-especiais'
+      : `grid-temporada-${idx + 1}`;
+    renderTemporada(gridId, temporada);
+  });
+
+  atualizarAbas(data);
+  mostrarTemporada(0);
+}
+
+// Objetos globais para armazenar datas de início de cada capítulo
+let dataExibicaoCapitulo = {};
+let dataRepriseCapitulo  = {};
+
+function renderTemporada(containerId, temporada) {
+  const grid = document.getElementById(containerId);
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  const agora = new Date();
+
+  temporada.episodios.forEach(ep => {
+    const temp = String(temporada.temporada).padStart(2, '0');
+    const totalCaps = Number(ep.capitulos) || 1;
+    const limite = capitularizarAtivo ? totalCaps : 1;
+
+    for (let cap = 1; cap <= limite; cap++) {
+      const fig = document.createElement('div');
+      fig.className = 'fig';
+
+      const img = document.createElement('img');
+      img.src = temporada.thumb || coverDefault;
+
+      const capGlobal = String(contadorCapituloGlobal).padStart(4,'0');
+
+      // SE FOR CAPITULARIZADO, atualiza global
+      if (capitularizarAtivo) {
+        // Salva a data do primeiro episódio de cada capítulo
+        if (!dataExibicaoCapitulo[ep.ep_s]) dataExibicaoCapitulo[ep.ep_s] = new Date(dataExibicaoGlobal);
+        if (!dataRepriseCapitulo[ep.ep_s])  dataRepriseCapitulo[ep.ep_s]  = new Date(dataRepriseGlobal);
+      }
+
+      // Escolhe as datas corretas
+      const exib = capitularizarAtivo 
+        ? formatarData(dataExibicaoGlobal,'08:10') 
+        : formatarData(dataExibicaoCapitulo[ep.ep_s],'08:10');
+
+      const rep = capitularizarAtivo 
+        ? formatarData(dataRepriseGlobal,'02:00') 
+        : formatarData(dataRepriseCapitulo[ep.ep_s],'02:00');
+
+      if ((capitularizarAtivo ? dataExibicaoGlobal : dataExibicaoCapitulo[ep.ep_s]) > agora)
+        fig.classList.add('nao-exibido');
+
+      const span = document.createElement('span');
+      span.innerHTML = `
+        <div class="fig-title">
+          T${temp}E${capitularizarAtivo ? capGlobal : String(ep.ep_s).padStart(2, '0')} - ${ep.titulo}${capitularizarAtivo ? `: Episódio ${cap}` : ''}
+        </div>
+        <div class="fig-info">Capítulo: ${ep.ep_s}</div>
+        <div class="fig-info">Exibição: ${exib}</div>
+        <div class="fig-date">Reprise: ${rep}</div>
+      `;
+
+      fig.append(img, span);
+      grid.appendChild(fig);
+
+      // Avança datas apenas se capitularizado
+      if (capitularizarAtivo) {
+        dataExibicaoGlobal = avancarDiaUtil(dataExibicaoGlobal, diasExibicao);
+        dataRepriseGlobal  = avancarDiaUtil(dataRepriseGlobal, diasReprise);
+        contadorCapituloGlobal++;
+      }
+    }
+  });
+}
+
+
+/* =========================
+   CARREGAMENTO JSON
+   ========================= */
+fetch('https://wiki-ch.github.io/arquivos/sitio_picapau_amarelo.json')
+  .then(r => r.json())
+  .then(data => {
+    dataOriginal = data;
+    renderTudo(dataOriginal);
+  })
+  .catch(err => console.warn('Erro JSON:', err));
+
+/* =========================
+   TOGGLE CAPITULARIZAR
+   ========================= */
+chkCap.addEventListener('change', () => {
+  capitularizarAtivo = chkCap.checked;
+  renderTudo(dataOriginal);
+});
+
+/* =========================
+   BUSCA
+   ========================= */
+searchInput.addEventListener('input', () => {
+  const termo = searchInput.value.toLowerCase();
+  const ativa = document.querySelector('main section.active');
+  if (!ativa) return;
+
+  ativa.querySelectorAll('.fig').forEach(fig => {
+    fig.style.display = fig.innerText.toLowerCase().includes(termo)
+      ? 'flex'
+      : 'none';
+  });
+});
+
+/* =========================
+   BOTÃO TOPO
+   ========================= */
+function checkShowBtn() {
+  btnTopo.classList.toggle('visible', window.pageYOffset > 300);
+}
+
+window.addEventListener('scroll', checkShowBtn, { passive:true });
+btnTopo.onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
+</script>
+
+
+
+
+<footer id="mainFooter">
+  <div class="footer-content">
+    <div class="footer-left">
+      <p>© 2026 WIKI SÍTIO GLOBO ON</p>
+      <p>Site wiki criado por fãs. Todos os direitos reservados a GLOBO.</p>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:pwrmello@gmail.com">CRIADOR</a>
+    </div>
+  </div>
+</footer>
+</body>
+
+
+</html>

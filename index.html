@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://mais.sbt.com.br/favicon.ico" type="image/x-icon" sizes="128x128"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WIKI CH SBT+</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #0d0d0d;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+  }
+    header {
+      background: linear-gradient(90deg, #6a5acd, #8a2be2);
+      text-align: center;
+      padding: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+  /* ---------- THEMES ---------- */
+  body.theme-chaves header {
+    background: linear-gradient(90deg, #0f5132, #198754);
+  }
+
+  body.theme-chapolin header {
+    background: linear-gradient(90deg, #7f1d1d, #dc3545);
+  }
+
+  body.theme-chaves .menu {
+    background: #175c3b;
+    border: 2px dashed #20c997;
+  }
+
+  body.theme-chapolin .menu {
+    background: #722f37;
+    border: 2px dashed #ff6b6b;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1400px;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+
+  .menu-item {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .menu-item:hover,
+  .menu-item.active {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .sub-menu {
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid white;
+    width: 100%;
+  }
+
+  .sub-menu div {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .sub-menu div:hover,
+  .sub-menu div.active {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+  }
+
+  /* ========== FIGURA ========= */
+  .fig {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  body.theme-chaves .fig:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4); /* verde claro */
+  }
+
+  body.theme-chapolin .fig:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4); /* vermelho claro */
+  }
+
+  .fig img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    background-color: #2a2a2a;
+  }
+
+  .fig span {
+    padding: 12px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.9);
+    background: #1a1a1a;
+    display: block;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.4em;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .fig .fig-title {
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+    display: block;
+  }
+
+  .fig .fig-info {
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+    font-family: monospace;
+  }
+
+  .fig .fig-date {
+    font-size: 0.7em;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  section {
+    display: none;
+  }
+
+  section.active {
+    display: block;
+  }
+  
+.search-bar {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin: 20px auto;         /* centraliza igual ao grid */
+  max-width: 1400px;         /* mesma largura do grid/menu */
+  display: none;
+}
+        .search-bar.active {
+            display: block;
+        }
+
+        .search-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+/* ========= Botão Voltar ao Topo ========= */
+#btnTopo {
+  position: fixed;
+  right: 30px;
+  bottom: 100px;
+  z-index: 9999;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+#btnTopo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#btnTopo:focus { box-shadow: 0 0 0 3px rgba(255,255,255,0.08); }
+
+/* A cor inicial (padrão) */
+#btnTopo { background-image: linear-gradient(90deg, #6a5acd, #8a2be2); }
+
+/* Ajustes responsivos */
+@media (max-width:600px){
+  #btnTopo { right: 12px; bottom: 16px; width:44px; height:44px; }
+}
+ /* Footer Geral */
+  #mainFooter {
+    background: #111;
+    color: #aaa;
+    font-size: 0.85rem;
+    padding: 16px 20px;
+    text-align: center;
+    border-top: 2px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .footer-left p {
+    margin: 2px 0;
+  }
+
+  .footer-right a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 16px;
+    transition: color 0.3s;
+  }
+
+  .footer-right a:hover {
+    color: #fff;
+  }
+
+  /* Responsivo */
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-right a {
+      margin-left: 0;
+      margin-right: 12px;
+    }
+  }
+</style>
+
+</head>
+<body class="theme-chaves">
+
+  <header>WIKI CH SBT // 2024 - 2025</header>
+
+  <div class="menu">
+    <div class="menu-item active" data-main="chaves">CHAVES</div>
+    <div class="menu-item" data-main="chapolin">CHAPOLIN</div>
+
+    <div class="sub-menu">
+      <div data-index="0" class="active">LOTE I</div>
+      <div data-index="1">LOTE II</div>
+      <div data-index="2">LOTE F</div>
+      <div data-index="3">LOTE E</div>
+    </div>
+  </div>
+
+  <main>
+  <!-- Barra de busca fica dentro do main -->
+  <div class="search-bar active" id="searchBar">
+    <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar por título, episódio ou ID...">
+  </div>
+  
+    <!-- CHAVES -->
+    <section id="chavesI" class="active">
+      <div class="grid" id="grid-chaves-i"></div>
+    </section>
+
+    <section id="chavesII">
+      <div class="grid" id="grid-chaves-ii"></div>
+    </section>
+
+    <section id="chavesF">
+      <div class="grid" id="grid-chaves-f"></div>
+    </section>
+
+    <section id="chavesE">
+      <div class="grid" id="grid-chaves-e"></div>
+    </section>
+
+    <!-- CHAPOLIN -->
+    <section id="chapolinI">
+      <div class="grid" id="grid-chapolin-i"></div>
+    </section>
+
+    <section id="chapolinII">
+      <div class="grid" id="grid-chapolin-ii"></div>
+    </section>
+
+    <section id="chapolinF">
+      <div class="grid" id="grid-chapolin-f"></div>
+    </section>
+
+    <section id="chapolinE">
+      <div class="grid" id="grid-chapolin-e"></div>
+    </section>
+  </main>
+
+  <!-- Botão voltar ao topo (aparece quando estiver quase no fim da página) -->
+  <button id="btnTopo" aria-label="Voltar ao topo" title="Voltar ao topo">▲</button>
+
+<script>
+/* =========================
+   LÓGICA DE ABAS
+   ========================= */
+const mainItems = document.querySelectorAll('.menu-item');
+const subTabs = document.querySelectorAll('.sub-menu div');
+const sections = document.querySelectorAll('main section');
+
+const mapping = {
+  chaves: ['chavesI', 'chavesII', 'chavesF', 'chavesE'],
+  chapolin: ['chapolinI', 'chapolinII', 'chapolinF', 'chapolinE']
+};
+
+let activeMain = 'chaves';
+
+// Variáveis globais para armazenar dados carregados
+let chavesData = {};
+let chapolinData = {};
+
+function showSectionById(id) {
+  sections.forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
+}
+
+function activateMain(mainName) {
+  activeMain = mainName;
+  mainItems.forEach(mi => mi.classList.toggle('active', mi.dataset.main === mainName));
+  subTabs.forEach((t, idx) => t.classList.toggle('active', idx === 0));
+  showSectionById(mapping[mainName][0]);
+  applyTheme(mainName);
+  updateSubTabsCounters(mainName);  // Atualiza os contadores ao trocar o menu principal
+}
+
+mainItems.forEach(mi => {
+  mi.addEventListener('click', () => activateMain(mi.dataset.main));
+});
+
+subTabs.forEach((tab, idx) => {
+  tab.addEventListener('click', () => {
+    subTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const targetId = mapping[activeMain][idx];
+    showSectionById(targetId);
+  });
+});
+
+/* =========================
+   FUNÇÕES DE RENDER
+   ========================= */
+const coverDefault = 'https://wiki-ch.github.io/arquivos/cover.jpg';
+
+function renderLote(containerId, episodes) {
+  const grid = document.getElementById(containerId);
+  grid.innerHTML = '';
+  let exibidos = 0;
+
+  episodes.forEach((ep) => {
+    const div = document.createElement('div');
+    div.className = 'fig';
+
+    const img = document.createElement('img');
+    img.src = ep.cover || coverDefault;
+    img.alt = ep.name || `Episódio`;
+
+    // Extrair o número final do reference_id (ex: 001)
+    let epNumber = '000';
+    if (ep.reference_id) {
+      const match = ep.reference_id.match(/_(\d{3})$/);
+      if (match) epNumber = match[1];
+    }
+
+    const span = document.createElement('span');
+    span.innerHTML = `
+      <div class="fig-title">#${epNumber} - ${ep.name || 'Sem título'}</div>
+      <div class="fig-info">REF: ${ep.reference_id || '—'}</div>
+      <div class="fig-info">EX: ${ep.exibicao || '—'}</div>
+      <div class="fig-date">TV: ${(ep.datas || []).join(' | ') || '—'}</div>
+    `;
+
+    if (ep.enabled) exibidos++;
+
+    div.appendChild(img);
+    div.appendChild(span);
+    grid.appendChild(div);
+  });
+}
+
+/* =========================
+   FUNÇÕES DE CONTADORES
+   ========================= */
+function processJson(containerBaseId, data, prefixos) {
+  prefixos.forEach(([key, containerId]) => {
+    const episodes = data[key] || [];
+    renderLote(containerId, episodes);
+  });
+}
+
+function updateSubTabsCounters(mainName) {
+  const data = mainName === 'chaves' ? chavesData : chapolinData;
+  const prefixos = mainName === 'chaves' 
+    ? ['videos_16001224_2024', 'videos_16007200_2024', 'videos_fixos', 'videos_extras']
+    : ['videos_16001293_2024', 'videos_16007465_2024', 'videos_fixos', 'videos_extras'];
+
+  prefixos.forEach((key, idx) => {
+    const episodes = data[key] || [];
+    const exibidos = episodes.filter(ep => ep.enabled).length;
+    const baseName = idx === 0 ? "LOTE I"
+                    : idx === 1 ? "LOTE II"
+                    : idx === 2 ? "LOTE F"
+                    : "LOTE E";
+
+    const tab = subTabs[idx];
+    if (tab) {
+      tab.innerText = `${baseName} (${exibidos} / ${episodes.length})`;
+    }
+  });
+}
+
+/* =========================
+   CARREGAMENTO DOS JSONS
+   ========================= */
+Promise.all([
+  fetch('https://wiki-ch.github.io/arquivos/chaves_formatado.json').then(res => res.json()),
+  fetch('https://wiki-ch.github.io/arquivos/chapolin_formatado.json').then(res => res.json())
+]).then(([dataChaves, dataChapolin]) => {
+  chavesData = dataChaves;
+  chapolinData = dataChapolin;
+
+  processJson('chaves', chavesData, [
+    ['videos_16001224_2024', 'grid-chaves-i'],
+    ['videos_16007200_2024', 'grid-chaves-ii'],
+    ['videos_fixos', 'grid-chaves-f'],
+    ['videos_extras', 'grid-chaves-e']
+  ]);
+
+  processJson('chapolin', chapolinData, [
+    ['videos_16001293_2024', 'grid-chapolin-i'],
+    ['videos_16007465_2024', 'grid-chapolin-ii'],
+    ['videos_fixos', 'grid-chapolin-f'],
+    ['videos_extras', 'grid-chapolin-e']
+  ]);
+
+  // Estado inicial só depois de tudo carregado
+  activateMain(activeMain);
+}).catch(err => {
+  console.warn('Não foi possível carregar os JSONs:', err);
+  // Ainda assim inicializa a interface
+  activateMain(activeMain);
+});
+
+/* =========================
+   TEMA CSS DINÂMICO
+   ========================= */
+function applyTheme(mainName) {
+  const body = document.body;
+  if (mainName === 'chaves') {
+    body.classList.remove('theme-chapolin');
+    body.classList.add('theme-chaves');
+  } else {
+    body.classList.remove('theme-chaves');
+    body.classList.add('theme-chapolin');
+  }
+  // Atualiza cor do botão de voltar ao topo
+  updateBackToTopTheme();
+}
+
+function updateBackToTopTheme(){
+  const btn = document.getElementById('btnTopo');
+  if (!btn) return;
+  const body = document.body;
+  if (body.classList.contains('theme-chaves')){
+    btn.style.backgroundImage = 'linear-gradient(90deg, #0f5132, #198754)';
+    btn.style.boxShadow = '0 8px 22px rgba(25,135,84,0.28)';
+  } else {
+    btn.style.backgroundImage = 'linear-gradient(90deg, #7f1d1d, #dc3545)';
+    btn.style.boxShadow = '0 8px 22px rgba(220,53,69,0.28)';
+  }
+}
+
+/* =========================
+   FILTRO DE BUSCA
+   ========================= */
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', () => {
+  const termo = searchInput.value.toLowerCase();
+  const activeSection = document.querySelector('main section.active');
+  if (!activeSection) return;
+
+  const figs = activeSection.querySelectorAll('.fig');
+  figs.forEach(fig => {
+    const texto = fig.innerText.toLowerCase();
+    fig.style.display = texto.includes(termo) ? 'flex' : 'none';
+  });
+});
+
+
+		
+/* =========================
+   BOTÃO VOLTAR AO TOPO (COMPORTAMENTO)
+   - Aparece quando o usuário rola para baixo
+   - Ao clicar, faz scroll suave até o topo
+   - Herda a cor do tema atual
+   ========================= */
+const btnTopo = document.getElementById('btnTopo');
+
+function checkShowBtn() {
+  try {
+    if (window.pageYOffset > 300) { // aparece após 300px de scroll
+      btnTopo.classList.add('visible');
+    } else {
+      btnTopo.classList.remove('visible');
+    }
+  } catch (e) { /* ignora se btn não encontrado */ }
+}
+
+window.addEventListener('scroll', checkShowBtn, { passive: true });
+window.addEventListener('resize', checkShowBtn);
+
+document.addEventListener('DOMContentLoaded', () => {
+  checkShowBtn();
+  updateBackToTopTheme();
+});
+
+btnTopo.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Observa mudanças na classe do body (tema)
+const observer = new MutationObserver(muts => {
+  for (const m of muts) {
+    if (m.attributeName === 'class') updateBackToTopTheme();
+  }
+});
+observer.observe(document.body, { attributes: true });
+
+</script>
+
+<footer id="mainFooter">
+  <div class="footer-content">
+    <div class="footer-left">
+      <p>© 2024 - 2025 WIKI CH SBT+</p>
+      <p>Site wiki criado por fãs. Todos os direitos reservados ao SBT & Televisa.</p>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:pwrmello@gmail.com">CRIADOR</a>
+        <a href="https://wiki-ch.github.io/arquivos/index2.html">WIKI MSW</a>
+    </div>
+  </div>
+</footer>
+</body>
+
+
+</html>

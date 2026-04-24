@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/b/b2/Multishow_HD_logo.png" type="image/x-icon" sizes="128x128"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WIKI CH MSW</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0d0d0d;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(90deg, #6a5acd, #8a2be2);
+      text-align: center;
+      padding: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+/* ---------- THEMES ---------- */
+body.theme-chaves header {
+  background: linear-gradient(90deg, #6ec300, #9ffd04); /* verde forte -> verde principal */
+}
+
+body.theme-chapolin header {
+  background: linear-gradient(90deg, #a94400, #ec6c02); /* laranja escuro -> laranja principal */
+}
+
+body.theme-chaves .menu {
+  background: #7ac400; /* verde mais escuro */
+  border: 2px dashed #b7ff4a; /* verde bem claro */
+}
+
+body.theme-chapolin .menu {
+  background: #a94400; /* laranja mais escuro */
+  border: 2px dashed #ff9a3b; /* laranja mais claro */
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1400px;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.menu-item {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* ========== FIGURA ========= */
+.fig {
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover para Chaves */
+body.theme-chaves .fig:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(159, 253, 4, 0.5); /* verde brilhante */
+}
+
+/* Hover para Chapolin */
+body.theme-chapolin .fig:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(236, 108, 2, 0.5); /* laranja vibrante */
+}
+
+/* Texto dentro do tema */
+body.theme-chaves .menu-item.active {
+  color: #eaffcc; /* verde muito claro para contraste */
+}
+
+body.theme-chapolin .menu-item.active {
+  color: #fff3e6; /* laranja claro para contraste */
+}
+
+
+    .fig img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background-color: #2a2a2a;
+    }
+
+    .fig span {
+      padding: 12px;
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.9);
+      background: #1a1a1a;
+      display: block;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.4em;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .fig .fig-title {
+      font-size: 0.95em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: white;
+      display: block;
+    }
+
+    .fig .fig-info {
+      font-size: 0.75em;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 4px;
+      font-family: monospace;
+    }
+
+    .fig .fig-date {
+      font-size: 0.7em;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    /* ========= Botão Voltar ao Topo ========= */
+    #btnTopo {
+      position: fixed;
+      right: 30px;
+      bottom: 100px;
+      z-index: 9999;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .25s ease, transform .25s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    #btnTopo.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #btnTopo:focus { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08); }
+
+/* Cores de fundo do botão, dependendo do tema */
+body.theme-chaves #btnTopo {
+  background-image: linear-gradient(90deg, #6ec300, #9ffd04); /* Verde */
+}
+
+body.theme-chapolin #btnTopo {
+  background-image: linear-gradient(90deg, #a94400, #ec6c02); /* Laranja */
+}
+
+
+    /* Ajustes responsivos */
+    @media (max-width:600px){
+      #btnTopo { right: 12px; bottom: 16px; width:44px; height:44px; }
+    }
+    
+    .search-bar {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin: 20px auto;
+      max-width: 1400px;
+      display: none;
+    }
+
+    .search-bar.active {
+      display: block;
+    }
+
+    .search-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1em;
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+	
+	/* Footer Geral */
+  #mainFooter {
+    background: #111;
+    color: #aaa;
+    font-size: 0.85rem;
+    padding: 16px 20px;
+    text-align: center;
+    border-top: 2px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .footer-left p {
+    margin: 2px 0;
+  }
+
+  .footer-right a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 16px;
+    transition: color 0.3s;
+  }
+
+  .footer-right a:hover {
+    color: #fff;
+  }
+
+  /* Responsivo */
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-right a {
+      margin-left: 0;
+      margin-right: 12px;
+    }
+  }
+  </style>
+</head>
+<body class="theme-chaves">
+
+  <header>WIKI CH MSW // 2025 - 2026</header>
+
+  <div class="menu">
+    <div class="menu-item active" data-main="chaves">CHAVES</div>
+    <div class="menu-item" data-main="chapolin">CHAPOLIN</div>
+  </div>
+
+  <main>
+    <div class="search-bar active" id="searchBar">
+      <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar por título, episódio ou ID...">
+    </div>
+  
+    <section id="chaves" class="active">
+      <div class="grid" id="grid-chaves-i"></div>
+    </section>
+
+    <section id="chapolin">
+      <div class="grid" id="grid-chapolin-i"></div>
+    </section>
+  </main>
+
+  <button id="btnTopo" aria-label="Voltar ao topo" title="Voltar ao topo">▲</button>
+
+  <footer id="mainFooter">
+    <div class="footer-content">
+      <div class="footer-left">
+        <p>© 2025 - 2026 WIKI CH MSW</p>
+        <p>Site wiki criado por fãs. Todos os direitos reservados ao Multishow & Televisa.</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:pwrmello@gmail.com">CRIADOR</a>
+        <a href="https://wiki-ch.github.io/arquivos/index.html">WIKI SBT</a>
+      </div>
+    </div>
+  </footer>
+  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuItems = document.querySelectorAll('.menu-item');
+  const sections = document.querySelectorAll('section');
+  const gridChaves = document.getElementById('grid-chaves-i');
+  const gridChapolin = document.getElementById('grid-chapolin-i');
+
+  const jsonURL = 'https://wiki-ch.github.io/arquivos/msw_formatado.json';
+
+  // Formata número com 3 dígitos
+  function formatNumero(numero) {
+    return numero.toString().padStart(3, '0');
+  }
+
+  // Corrige espaços ao redor de "/"
+  function formatTitulo(titulo) {
+    return titulo.replace(/\s*\/\s*/g, ' / ');
+  }
+
+  // Gera a data de acordo com a faixa do episódio
+function generateDateForEpisode(numeroEpisodio, serie) {
+  let date;
+
+  // Ajuste do EP 65 inexistente do Chapolin
+  //if (serie === 'chapolin' && numeroEpisodio >= 65) {
+  //  numeroEpisodio--;
+  //}
+
+  if (serie === 'chaves' && numeroEpisodio <= 99) {
+    // EP 001–099 → segunda a sexta
+    const startDate = new Date(2025, 7, 3, 10, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 0;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day >= 1 && day <= 5) addedEpisodes++;
+    }
+    return date;
+
+  } else if (serie === 'chapolin' && numeroEpisodio <= 64) {
+    // EP 001–099 → segunda a sexta
+    const startDate = new Date(2025, 7, 3, 10, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 0;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day >= 1 && day <= 5) addedEpisodes++;
+    }
+    return date;
+
+  }else if (serie === 'chapolin' && numeroEpisodio <= 65) {
+    // EP 001–099 → segunda a sexta
+    const startDate = new Date(2069, 7, 3, 10, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 65;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day >= 1 && day <= 5) addedEpisodes++;
+    }
+    return date;
+
+  } else if (serie === 'chapolin' && numeroEpisodio <= 99) {
+    // EP 001–099 → segunda a sexta
+    const startDate = new Date(2025, 9, 31, 10, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 66;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day >= 1 && day <= 5) addedEpisodes++;
+    }
+    return date;
+
+  } else if (numeroEpisodio <= 111) {
+    // EP 100–111 → terça, quarta e quinta
+    const startDate = new Date(2025, 8, 9, 2, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 100;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day >= 2 && day <= 4) addedEpisodes++;
+    }
+    return date;
+
+  } else if (numeroEpisodio <= 133) {
+    // EP 112–133 → terça e quinta
+    const startDate = new Date(2025, 9, 7, 2, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 112;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day === 2 || day === 4) addedEpisodes++;
+    }
+    return date;
+
+  } else if (numeroEpisodio <= 999) {
+    // EP 134+ → segunda a sexta
+    const startDate = new Date(2026, 0, 5, 10, 0, 0);
+    date = new Date(startDate);
+    let addedEpisodes = 134;
+
+    while (addedEpisodes < numeroEpisodio) {
+      date.setDate(date.getDate() + 1);
+      const day = date.getDay();
+      if (day >= 1 && day <= 5) addedEpisodes++;
+    }
+    return date;
+  }
+
+  return null;
+}
+
+
+  // Formata data como DD/MM/YYYY 10:00
+  function formatDate(date) {
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  }
+
+  // Renderiza a grid de episódios
+  function renderGrid(data, gridElement) {
+    gridElement.innerHTML = '';
+    const now = new Date();
+
+    data.forEach((item) => {
+      const numeroFormatado = formatNumero(item.numero);
+      const tituloFormatado = formatTitulo(item.titulo_exibicao || item.titulo);
+      const serie =
+      gridElement.id === 'grid-chapolin-i' ? 'chapolin' : 'chaves';
+
+      const date = generateDateForEpisode(item.numero, serie);
+
+      let ref, tv, imgClass;
+
+      if (!date) {
+        ref = '-';
+        tv = '-';
+        imgClass = ''; // sem cor
+      } else {
+        const dia = String(date.getDate()).padStart(2, '0');
+        ref = `D${dia}E${numeroFormatado}`;
+        tv = formatDate(date);
+        imgClass = (now >= date) ? 'estreou' : 'aguardando';
+      }
+
+      const div = document.createElement('div');
+      div.classList.add('fig');
+      div.innerHTML = `
+        <img src="${item.capa}" alt="${tituloFormatado}" class="${imgClass}">
+        <span>
+          <div class="fig-title">#${numeroFormatado} - ${tituloFormatado}</div>
+          <div class="fig-info">REF: ${ref}</div>
+          <div class="fig-info">TV: ${tv}</div>
+        </span>
+      `;
+      gridElement.appendChild(div);
+    });
+  }
+
+  // Carrega os dados e aplica eventos de menu
+  function loadData() {
+    fetch(jsonURL)
+      .then(response => response.json())
+      .then(data => {
+        const loteChaves = data.lote_chaves;
+        const loteChapolin = data.lote_chapolin;
+
+        renderGrid(loteChaves, gridChaves);
+
+        menuItems.forEach(item => {
+          item.addEventListener('click', () => {
+            document.body.className = `theme-${item.dataset.main}`;
+            menuItems.forEach(menu => menu.classList.remove('active'));
+            item.classList.add('active');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(item.dataset.main).classList.add('active');
+
+            if (item.dataset.main === 'chaves') {
+              renderGrid(loteChaves, gridChaves);
+            } else {
+              renderGrid(loteChapolin, gridChapolin);
+            }
+          });
+        });
+      })
+      .catch(error => console.error('Erro ao carregar o JSON:', error));
+  }
+
+  loadData();
+
+  // Botão de topo
+  const btnTopo = document.getElementById('btnTopo');
+
+  function checkShowBtn() {
+    if (!btnTopo) return;
+    if (window.pageYOffset > 300) {
+      btnTopo.classList.add('visible');
+    } else {
+      btnTopo.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkShowBtn, { passive: true });
+  window.addEventListener('resize', checkShowBtn);
+  checkShowBtn();
+
+  if (btnTopo) {
+    btnTopo.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  const observer = new MutationObserver(muts => {
+    muts.forEach(m => {
+      if (m.attributeName === 'class') checkShowBtn();
+    });
+  });
+  observer.observe(document.body, { attributes: true });
+
+  // Filtro de busca
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const termo = searchInput.value.toLowerCase();
+      const activeSection = document.querySelector('main section.active');
+      if (!activeSection) return;
+      activeSection.querySelectorAll('.fig').forEach(fig => {
+        const texto = fig.innerText.toLowerCase();
+        fig.style.display = texto.includes(termo) ? 'flex' : 'none';
+      });
+    });
+  }
+
+});
+</script>
+
+<style>
+  /* Imagem em preto e branco para episódios não estrearam */
+  .fig img.aguardando {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+  }
+
+  /* Imagem colorida para episódios já estrearam */
+  .fig img.estreou {
+    filter: grayscale(0%);
+    transition: filter 0.5s ease;
+  }
+</style>
+
+</body>
+</html>
