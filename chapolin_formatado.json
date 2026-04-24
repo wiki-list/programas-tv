@@ -12,20 +12,6 @@
       "datas": [
         ""
       ]
-    },
-    {
-      "name": "A aventura em Vênus",
-      "reference_id": "6363759535112_chapolincolorado_2025_001",
-      "original_title": "",
-      "episode_order_number": "",
-      "id": "5f826104-e718-4105-9bdf-e64763267e43",
-      "cover": "https://stream.maissbt.com/image/5f826104-e718-4105-9bdf-e64763267e43/1280x720/8m13s/image.jpeg",
-      "time": "",
-      "enabled": true,
-      "exibicao": "SBT REDE | +SBT",
-      "datas": [
-        "15/02/2026"
-      ]
     }
   ],
   "videos_fixos": [
@@ -3965,6 +3951,20 @@
       "exibicao": "",
       "datas": [
         ""
+      ]
+    },
+    {
+      "name": "A aventura em Vênus",
+      "reference_id": "000000611_16007465_chapolincolorado_2024_126",
+      "original_title": "",
+      "episode_order_number": "",
+      "id": "5f826104-e718-4105-9bdf-e64763267e43",
+      "cover": "https://stream.maissbt.com/image/5f826104-e718-4105-9bdf-e64763267e43/1280x720/8m13s/image.jpeg",
+      "time": "",
+      "enabled": true,
+      "exibicao": "SBT REDE | +SBT",
+      "datas": [
+        "15/02/2026"
       ]
     }
   ]
