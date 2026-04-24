@@ -240,9 +240,10 @@
       "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/AYYQCHUOwM4/maxresdefault.jpg",
       "time": "26",
       "enabled": true,
-      "exibicao": "",
+      "exibicao": "SBT REDE",
       "datas": [
-        ""
+        "09/12/2024",
+        "03/10/2025"
       ]
     },
     {
@@ -338,9 +339,10 @@
       "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/0qXsu01gQus/mqdefault.jpg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "",
+      "exibicao": "SBT REDE",
       "datas": [
-        ""
+        "05/03/2025",
+        "02/10/2025"
       ]
     },
     {
@@ -1015,7 +1017,7 @@
       "enabled": true,
       "exibicao": "SBT REDE | +SBT",
       "datas": [
-        "20/06/2025", "03/03/2025"
+        "03/03/2025", "20/06/2025", "03/10/2025"
       ]
     },
     {
@@ -1037,9 +1039,9 @@
       "reference_id": "000000611_16001293_chapolincolorado_2024_063",
       "original_title": "",
       "episode_order_number": "0",
-      "id": "20250303_058",
-      "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/3yBrvSdYhUw/maxresdefault.jpg",
-      "time": "XX",
+      "id": "",
+      "cover": "",
+      "time": "",
       "enabled": true,
       "exibicao": "",
       "datas": [
