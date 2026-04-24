@@ -464,7 +464,7 @@
       "cover": "https://img.youtube.com/vi/_nhS2iw7O7U/maxresdefault.jpg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "10/12/2024", "02/07/2025"
       ]
@@ -492,7 +492,7 @@
       "cover": "https://img.youtube.com/vi/F901vN8OoP4/mqdefault.jpg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "20/03/2025"
       ]
@@ -1083,7 +1083,7 @@
       "cover": "https://i3.ytimg.com/vi/Dpi8suLu7qY/hqdefault.jpg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "01/01/2025", "03/07/2025"
       ]
@@ -1223,7 +1223,7 @@
       "cover": "https://img.youtube.com/vi/_k8ms_Y6178/maxresdefault.jpg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "11/12/2024", "17/07/2025"
       ]
@@ -1265,7 +1265,7 @@
       "cover": "https://img.youtube.com/vi/6KHMsmQZ71c/maxresdefault.jpg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "02/11/2024"
       ]
@@ -1279,7 +1279,7 @@
       "cover": "https://img.youtube.com/vi/6KHMsmQZ71c/maxresdefault.jpg",
       "time": "",
       "enabled": false,
-      "exibicao": "<font color=\"red\">+SBT<font>",
+      "exibicao": "+SBT",
       "datas": [
         ""
       ]
@@ -1868,7 +1868,7 @@
       "cover": "https://stream.maissbt.com/image/758e0514-9965-450f-99e9-d5c26db54136/160x90/8m38s/image.jpeg",
       "time": "21",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "13/01/2025",
         "28/12/2025"
@@ -1883,7 +1883,7 @@
       "cover": "https://stream.maissbt.com/image/e56aafee-ece9-4136-8c71-74cd0fa9a37a/160x90/11m45s/image.jpeg",
       "time": "21",
       "enabled": true,
-      "exibicao": "SBT REDE | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
         "14/01/2025",
         "28/12/2025"
@@ -3161,7 +3161,7 @@
       "cover": "https://img.youtube.com/vi/UBBYK0A74nw/mqdefault.jpg",
       "time": "22",
       "enabled": true,
-      "exibicao": "SBT FILIAL | <font color=\"red\">+SBT<font>",
+      "exibicao": "SBT FILIAL | +SBT",
       "datas": [
         "?"
       ]
