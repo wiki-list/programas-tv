@@ -446,7 +446,7 @@ const searchInput = document.getElementById('searchInput');
 const btnTopo = document.getElementById('btnTopo');
 const chkCap = document.getElementById('chkCap');
 
-const coverDefault = 'https://wiki-ch.github.io/arquivos/sitio_cover.jpg';
+const coverDefault = 'https://wiki-list.github.io/programas-tv/sitio_cover.jpg';
 
 /* =========================
    CONTROLE GLOBAL
@@ -612,7 +612,7 @@ function renderTemporada(containerId, temporada) {
 /* =========================
    CARREGAMENTO JSON
    ========================= */
-fetch('https://wiki-ch.github.io/arquivos/sitio_picapau_amarelo.json')
+fetch('https://wiki-list.github.io/programas-tv/sitio_picapau_amarelo.json')
   .then(r => r.json())
   .then(data => {
     dataOriginal = data;

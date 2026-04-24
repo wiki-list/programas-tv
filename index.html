@@ -391,7 +391,7 @@ subTabs.forEach((tab, idx) => {
 /* =========================
    FUNÇÕES DE RENDER
    ========================= */
-const coverDefault = 'https://wiki-ch.github.io/arquivos/cover.jpg';
+const coverDefault = 'https://wiki-list.github.io/programas-tv/cover.jpg';
 
 function renderLote(containerId, episodes) {
   const grid = document.getElementById(containerId);
@@ -464,8 +464,8 @@ function updateSubTabsCounters(mainName) {
    CARREGAMENTO DOS JSONS
    ========================= */
 Promise.all([
-  fetch('https://wiki-ch.github.io/arquivos/chaves_formatado.json').then(res => res.json()),
-  fetch('https://wiki-ch.github.io/arquivos/chapolin_formatado.json').then(res => res.json())
+  fetch('https://wiki-list.github.io/programas-tv/chaves_formatado.json').then(res => res.json()),
+  fetch('https://wiki-list.github.io/programas-tv/chapolin_formatado.json').then(res => res.json())
 ]).then(([dataChaves, dataChapolin]) => {
   chavesData = dataChaves;
   chapolinData = dataChapolin;
@@ -588,7 +588,7 @@ observer.observe(document.body, { attributes: true });
     </div>
     <div class="footer-right">
       <a href="mailto:pwrmello@gmail.com">CRIADOR</a>
-        <a href="https://wiki-ch.github.io/arquivos/index2.html">WIKI MSW</a>
+        <a href="https://wiki-list.github.io/programas-tv/index2.html">WIKI MSW</a>
     </div>
   </div>
 </footer>

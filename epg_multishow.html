@@ -614,7 +614,7 @@ async function fetchData() {
         <div style="margin-top:20px; font-size:1.1em; background:#d4edda; border:2px solid #c3e6cb; padding:15px; border-radius:8px; color:#000;">
           <strong>⚡ Não quer instalar nenhuma extensão?</strong><br>
           Utilize a <strong>versão beta</strong>. Ela pode demorar um pouco mais ao clicar nos dias, mas funciona sem extensões.<br><br>
-          <a href="https://wiki-ch.github.io/arquivos/epg_multishow_beta.html" 
+          <a href="https://wiki-list.github.io/programas-tv/epg_multishow_beta.html" 
              target="_blank" 
              style="font-weight:bold; color:#856404; text-decoration:underline;">
             ACESSAR VERSÃO BETA
@@ -631,7 +631,7 @@ async function fetchData() {
       const container = document.getElementById('content');
       container.innerHTML = '';
 
-      const episodeData = await fetch("https://wiki-ch.github.io/arquivos/msw_formatado.json")
+      const episodeData = await fetch("https://wiki-list.github.io/programas-tv/msw_formatado.json")
         .then(r => r.json())
         .catch(_ => ({ lote_chaves: [], lote_chapolin: [] }));
 
@@ -838,7 +838,7 @@ async function fetchData() {
       </div>
       <div class="footer-right">
         <a href="mailto:pwrmello@gmail.com">CRIADOR</a>
-        <a href="https://wiki-ch.github.io/arquivos/index2.html">WIKI MSW</a>
+        <a href="https://wiki-list.github.io/programas-tv/index2.html">WIKI MSW</a>
       </div>
     </div>
   </footer>

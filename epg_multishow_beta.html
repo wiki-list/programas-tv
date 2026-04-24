@@ -614,7 +614,7 @@
       const container = document.getElementById('content');
       container.innerHTML = '';
 
-      const episodeData = await fetch("https://wiki-ch.github.io/arquivos/msw_formatado.json")
+      const episodeData = await fetch("https://wiki-list.github.io/programas-tv/msw_formatado.json")
         .then(r => r.json())
         .catch(_ => ({ lote_chaves: [], lote_chapolin: [] }));
 
@@ -719,7 +719,7 @@
         const aviso = document.createElement("div");
         aviso.style.textAlign = "center";
         aviso.style.color = "#007bff";
-        aviso.innerHTML = "* NOTA: O Canal costuma alterar o nome do episódio até a data de exibição.<br><br><font color='red'>Esta página é a versão BETA e possui lerdeza!</font><br><a href='https://wiki-ch.github.io/arquivos/epg_multishow.html' style='color:#007bff; font-weight:bold; text-decoration:underline;'>Voltar para a versão oficial</a>";
+        aviso.innerHTML = "* NOTA: O Canal costuma alterar o nome do episódio até a data de exibição.<br><br><font color='red'>Esta página é a versão BETA e possui lerdeza!</font><br><a href='https://wiki-list.github.io/programas-tv/epg_multishow.html' style='color:#007bff; font-weight:bold; text-decoration:underline;'>Voltar para a versão oficial</a>";
         dateGroup.appendChild(aviso);
         container.appendChild(dateGroup);
       }
@@ -821,7 +821,7 @@
       </div>
       <div class="footer-right">
         <a href="mailto:pwrmello@gmail.com">CRIADOR</a>
-        <a href="https://wiki-ch.github.io/arquivos/index2.html">WIKI MSW</a>
+        <a href="https://wiki-list.github.io/programas-tv/index2.html">WIKI MSW</a>
       </div>
     </div>
   </footer>
