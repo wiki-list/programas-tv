@@ -506,7 +506,11 @@
 
     function gerarURL() {
       const agora = Math.floor(Date.now() / 1000);
-      const startTime = 1754290800;
+
+      //const startTime = 1754290800;
+      const dias30 = 30 * 86400;
+      const startTime = agora - dias30;
+      
       const endTime = agora + (10 * 365 * 24 * 60 * 60);
       return `https://www.clarotvmais.com.br/avsclient/1.2/epg/livechannels?types=&channelIds=98&startTime=${startTime}&endTime=${endTime}&onlyUserContent=&location=FLORIANOPOLIS,SANTA%20CATARINA&channel=PCTV`;
     }	
@@ -542,7 +546,10 @@
       const container = document.getElementById("day-selector");
       container.innerHTML = "";
 
-      const baseDate = new Date("2025-08-04");
+      //const baseDate = new Date("2025-08-04");
+      const baseDate = new Date();
+      baseDate.setDate(baseDate.getDate() - 8);
+
       const today = new Date();
       const diffDays = Math.floor((today - baseDate) / (1000 * 60 * 60 * 24));
 
