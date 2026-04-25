@@ -1432,13 +1432,14 @@
       "reference_id": "000000611_16001293_chapolincolorado_2024_092",
       "original_title": "",
       "episode_order_number": "0",
-      "id": "20250227_056",
-      "cover": "https://images.weserv.nl/?sat=0&url=https://img.youtube.com/vi/VL4hCxbFE7c/maxresdefault.jpg",
+      "id": "78c16dd1-ba1d-4197-928d-f1ec4b72b2b8",
+      "cover": "https://stream.maissbt.com/image/78c16dd1-ba1d-4197-928d-f1ec4b72b2b8/1280x720/7m45s/image.jpeg",
       "time": "XX",
       "enabled": true,
-      "exibicao": "SBT REDE",
+      "exibicao": "SBT REDE | +SBT",
       "datas": [
-        "27/02/2025"
+        "27/02/2025",
+        "25/04/2026"
       ]
     },
     {
