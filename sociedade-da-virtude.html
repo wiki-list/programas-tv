@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mini-Wiki Sociedade da Virtude</title>
+
+<style>
+body{
+    margin:0;
+    background:#0d0f2a;
+    font-family:Arial;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+main{
+    flex:1;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    color:#ffd400;
+    font-size:42px;
+    font-weight:bold;
+    padding:20px;
+}
+
+.line{
+    height:2px;
+    background:#ffd400;
+    margin:10px 40px;
+}
+
+/* TOP */
+.top{
+    display:flex;
+    justify-content:space-between;
+    padding:0 60px;
+    align-items:center;
+}
+
+.top span{
+    color:#ffd400;
+    font-weight:bold;
+}
+
+select{
+    background:#ffd400;
+    border:none;
+    padding:5px;
+    font-weight:bold;
+}
+
+/* CAPAS */
+/* CAPAS */
+.covers{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:20px;
+}
+
+.cover{
+    border:3px solid #ffd400; /* Borda inicial */
+    cursor:pointer;
+    text-align:center;
+    width:320px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:0;
+    background:transparent;
+    transition: border 0.3s ease; /* Adiciona uma transição suave para a borda */
+}
+
+/* Quando a capa for selecionada (active) */
+.cover.active{
+    border:5px solid #fff; /* Aumenta a borda para destacar a capa ativa */
+    background: rgba(255, 255, 255, 0.2); /* Dá uma leve mudança de fundo para destacar */
+}
+
+/* Imagem dentro da capa */
+.cover img{
+    width:100%;
+    display:block;
+}
+
+.cover p{
+    margin:8px 0 0 0;
+    color:#ffd400;
+    font-weight:bold;
+    font-size:14px;
+    display:block;
+}
+
+/* AVISO */
+.notice{
+    max-width:800px;         /* largura limitada para melhor leitura */
+    margin:40px auto;        /* centraliza horizontalmente na página */
+    padding:20px;            /* espaçamento interno */
+    background:rgba(28,31,58,0.9); /* fundo escuro combinando com site */
+    color:#ffd400;           /* cor amarela do site */
+    font-size:16px;          /* tamanho confortável de leitura */
+    text-align:left;         /* texto alinhado à esquerda */
+    line-height:1.5em;       /* espaçamento entre linhas */
+    border-radius:12px;      /* cantos arredondados */
+    box-shadow:0 4px 15px rgba(0,0,0,0.5); /* sombra suave */
+}
+
+/* TABS */
+.tabs{
+    display:none;
+    margin:20px 40px;
+    border:2px solid #ffd400;
+    padding:10px;
+}
+
+.tab-list{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.tab{
+    padding:10px;
+    border:2px solid #ffd400;
+    cursor:pointer;
+}
+
+.tab.active{
+    background:#ffd400;
+    color:#000;
+}
+
+/* GRID */
+.episodes{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:15px;
+    margin-top:15px;
+}
+
+/* CARD */
+.card{
+    background:#1c1f3a;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+/* THUMB */
+.thumb{
+    position:relative;
+}
+
+.thumb img{
+    width:100%;
+}
+
+/* PLAY */
+.play{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:60px;
+    height:60px;
+    background:rgba(255,255,255,0.7);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    color:#000;
+}
+
+/* INFO */
+.info{
+    padding:10px;
+}
+
+.title{
+    color:#ffd400;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.meta{
+    font-size:12px;
+    color:#aaa;
+}
+
+/* ICONES */
+.icons{
+    display:flex;
+    justify-content:flex-end;
+    gap:5px;
+    margin-top:5px;
+}
+
+.icon{
+    width:20px;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.92);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-box{
+    width:85%;
+    height:85%;
+    display:flex;
+    flex-direction:column;
+    background:#0b0d1a;
+    border:1px solid #222;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+}
+
+/* HEADER */
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 14px;
+    background:#11142a;
+    border-bottom:1px solid #222;
+    flex-wrap:nowrap; /* Garantir que os botões fiquem lado a lado */
+}
+
+/* grupo de navegação com flex fixado para linha única */
+.nav-group{
+    display:flex;
+    gap:6px;
+    flex-direction:row; /* garante que os botões fiquem em linha */
+    align-items:center;
+    flex-shrink:0;
+}
+/* grupo de navegação */
+.modal-nav{
+    display:flex;
+    gap:6px;
+    flex-direction:row;
+    align-items:center;
+}
+
+/* botões */
+.modal-btn{
+    width:34px;
+    height:34px;
+    background:#1c1f3a;
+    border:1px solid #ffd400;
+    color:#ffd400;
+    cursor:pointer;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-btn:hover{
+    background:#ffd400;
+    color:#000;
+}
+
+/* título */
+.modal-title{
+    flex:1;
+    text-align:center;
+    font-size:13px;
+    color:#ffd400;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding:0 10px;
+}
+
+/* botão fechar */
+.modal-close{
+    width:34px;
+    height:34px;
+    background:#1c1f3a;
+    border:1px solid #ffd400;
+    color:#ffd400;
+    cursor:pointer;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-close:hover{
+    background:#ffd400;
+    color:#000;
+}
+
+/* BODY */
+.modal-body{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#000;
+    position:relative;
+}
+
+.modal-body iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+/* BOTÕES ‹ › */
+.nav-btn{
+    width:38px;
+    height:38px;
+    background:#1c1f3a;
+    border:1px solid #ffd400;
+    color:#ffd400;
+    cursor:pointer;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    transition:0.2s;
+}
+
+.nav-btn:hover{
+    background:#ffd400;
+    color:#000;
+}
+
+/* botão fechar */
+.close-btn{
+    width:38px;
+    height:38px;
+    background:#1c1f3a;
+    border:1px solid #ffd400;
+    color:#ffd400;
+    cursor:pointer;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    transition:0.2s;
+}
+
+.close-btn:hover{
+    background:#ffd400;
+    color:#000;
+}
+/* FOOTER */
+footer{
+    text-align:center;
+    color:#ffd400;
+    padding:20px;
+}
+/* Ícone de vídeo (YouTube ou HBO Max) */
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px; /* Espaço entre o título e o ícone */
+    padding: 2px; /* Espaço interno da borda */
+}
+
+.sub-tree {
+    margin-top: 2px;
+    font-size: 8px; /* menor que antes */
+    color: #ffd400;
+    line-height: 1.1em;
+}
+
+.sub-item {
+    margin-left: 8px; /* indentação */
+    word-break: break-word; /* evita que o texto ultrapasse o card */
+}
+
+/* Container */
+.social-container{
+    text-align:center;
+    color:#ffd400;
+    padding:15px 0;
+    font-size:13px;
+    /* border-top:1px solid #ffd400; */   /* Remover */
+    /* border-bottom:1px solid #ffd400; */ /* Remover */
+}
+
+/* Links */
+.social-links{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:6px;
+}
+
+.social-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    height:36px;
+    background:#ffd400;
+    border-radius:6px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-link img{
+    width:20px;
+    height:20px;
+}
+
+.social-link:hover{
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px #fff);
+}
+
+/* Cores específicas opcionais */
+.social-link.yt img{
+    filter: invert(0); /* mantém vermelho do YouTube */
+}
+.social-link.ig img{
+    filter: invert(0);
+}
+.social-link.close img{
+    filter: invert(0);
+}
+</style>
+</head>
+
+<body>
+
+<header>MINI-WIKI SOCIEDADE DA VIRTUDE</header>
+<div class="line"></div>
+
+<main>
+
+<div class="top">
+    <span>ESCOLHA UMA DAS OPÇÕES:</span>
+
+    <div>
+        <span>FILTRO:</span>
+        <select onchange="setFilter(this.value)">
+            <option value="serie">ORDEM DE SÉRIE</option>
+            <option value="data">ORDEM POR DATA</option>
+        </select>
+    </div>
+</div>
+
+<div class="covers" id="covers"></div>
+
+<div class="notice" id="notice">
+<strong>SOBRE:</strong>
+<br><br>
+1. Este site é apenas um agregador de links do YouTube ou HBO Max, criado por fãs para facilitar o acesso ao conteúdo da série “Sociedade da Virtude”. Ele não hospeda nenhum vídeo diretamente; apenas direciona você para os links oficiais.
+<br><br>
+2. Para assistir aos episódios, é necessário estar logado na sua conta do YouTube e/ou HBO Max, pois o site apenas abre os vídeos originais nessas plataformas.
+<br><br>
+3. Todas as visualizações contam para a página oficial do <a href="https://www.youtube.com/@SociedadedaVirtude?sub_confirmation=1" target="_blank" class="yt-follow-btn">YouTube</a>.
+<br><br>
+4. Esta página não é oficial ou endossada pelos criadores ou dono dos direitos da obra, e se solicitado, pode ser descontinuada.
+<br><br>
+<strong>OBS:</strong>
+<br>- A coleção da Adult Swim apresenta episódios em ordem diferente ou repetidos; devido a inconsistências no guia de programação (EPG), Nem todos os episódios foram catalogados.
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+</main>
+
+<footer>
+<div class="line"></div>
+<div class="social-container">
+    <span>Redes sociais oficiais da Sociedade da Virtude:</span>
+    <div class="social-links">
+        <a href="https://www.youtube.com/@SociedadedaVirtude" target="_blank" class="social-link yt">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+        </a>
+        <a href="https://www.instagram.com/sociedadedavirtude/" target="_blank" class="social-link ig">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        </a>
+        <a href="https://twitter.com/socdavirtude" target="_blank" class="social-link close">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png" alt="Fechar">
+        </a>
+    </div>
+</div>
+<div class="line"></div>
+</footer>
+
+	<div class="modal" id="modal">
+
+		<div class="modal-box">
+
+			<!-- HEADER MODERNO -->
+			<div class="modal-header">
+
+				<div class="nav-group">
+					<button onclick="prevVideo()" class="nav-btn">‹</button>
+					<button onclick="nextVideo()" class="nav-btn">›</button>
+				</div>
+
+				<div id="videoTitle" class="modal-title">
+					CARREGANDO...
+				</div>
+
+				<button onclick="closeModal()" class="close-btn">✕</button>
+
+			</div>
+
+			<!-- VIDEO -->
+			<div class="modal-body">
+				<iframe id="player" frameborder="0" allowfullscreen></iframe>
+			</div>
+
+		</div>
+
+	</div>
+
+<script>
+const API = "https://wiki-list.github.io/programas-tv/sociedade-da-virtude.json";
+
+let DATA = {};
+let currentSerie = null;
+let filterMode = "serie";
+
+let currentList = [];
+let currentIndex = 0;
+
+fetch(API)
+.then(r => r.json())
+.then(d => {
+    DATA = d;
+    renderCovers();
+})
+.catch(err => console.error("Erro API:", err));
+
+function renderCovers(){
+
+    const coversMap = {
+        "Sociedade da Virtude": "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/d1f97d88-f511-4cf8-9780-1543f83d8159/6223545f-7781-46b3-94f6-1ba22521939c?host=wbd-images.prod-vod.h264.io&partner=beamcom",
+
+        "Sociedade da Virtude - A Coleção": "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/d1f97d88-f511-4cf8-9780-1543f83d8159/a2f81797-b268-4d71-99a0-b5a92861260c?host=wbd-images.prod-vod.h264.io&partner=beamcom",
+
+        "Sociedade da Virtude - A Série": "https://images.cdn.prd.api.discomax.com/_Ve65/wrrJSE-QyDZENRSdw.jpeg"
+    };
+
+    let html = "";
+
+    Object.keys(DATA || {}).forEach(name => {
+
+        const img = coversMap[name] || "https://via.placeholder.com/320x160?text=Sem+Capa";
+
+        html += `
+        <div class="cover" onclick="selectSerie('${name}',this)">
+            <img src="${img}">
+            <p>${name}</p>
+			<br>
+        </div>`;
+    });
+
+    document.getElementById("covers").innerHTML = html;
+}
+
+function selectSerie(name,el){
+    currentSerie = name;
+
+    document.querySelectorAll(".cover").forEach(c => c.classList.remove("active"));
+    el.classList.add("active");
+
+    document.getElementById("notice").style.display = "none";
+    document.getElementById("tabs").style.display = "block";
+
+    renderSeasons();
+}
+
+function renderSeasons(){
+    const serie = DATA[currentSerie];
+    if(!serie) return;
+
+    let html = `<div class="tab-list">`;
+
+    Object.keys(serie).forEach((s,i)=>{
+        html += `
+        <div class="tab ${i===0?'active':''}" onclick="openSeason('${s}',this)">
+            ${s.replace("season_","TEMPORADA ").toUpperCase()}
+        </div>`;
+    });
+
+    html += `</div><div id="episodes"></div>`;
+    document.getElementById("tabs").innerHTML = html;
+
+    openSeason(Object.keys(serie)[0]);
+}
+
+function openSeason(season, el) {
+
+    if(filterMode === "data"){
+        renderByDate();
+        return;
+    }
+
+    if(el){
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        el.classList.add("active");
+    }
+
+    const list = DATA[currentSerie]?.[season] || [];
+    currentList = list;
+
+    // Calcular o índice inicial
+    let start = 1;
+
+    if(season !== "season_especial"){
+        // Somar o número de episódios das temporadas anteriores
+        const serieSeasons = Object.keys(DATA[currentSerie] || {});
+        for(const s of serieSeasons){
+            if(s === season) break; // para antes da temporada atual
+            if(s !== "season_especial"){
+                start += (DATA[currentSerie][s]?.length || 0);
+            }
+        }
+    }
+
+    renderEpisodes(list, start);
+}
+
+function formatDate(d){
+    return d ? new Date(d).toLocaleDateString('pt-BR') : "";
+}
+
+function formatDuration(iso){
+    if(!iso) return "";
+    const m = iso.match(/PT(\d+)M(\d+)S/);
+    return m ? `${m[1]}:${m[2].padStart(2,'0')}` : "";
+}
+
+function renderEpisodes(list, start) {
+
+    let html = `<div class="episodes">`;
+
+    list.forEach((ep, i) => {
+
+        const safeTitle = ep?.title || "Sem título";
+        const safeThumb = ep?.thumb || "https://via.placeholder.com/400x225?text=Sem+Thumb";
+
+        const icon = ep.source === "youtube" ? "▶" : "🎬";
+        const lock = ep.type === "premium" ? "🔒" : "";
+
+        let videoIcon = "";
+        if (ep.source === "youtube") {
+            videoIcon = `<a href="${ep.url}" target="_blank" class="video-icon youtube-icon" onclick="event.stopPropagation();">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="icon" alt="YouTube">
+                          </a>`;
+        } else if (ep.source === "hbomax") {
+            videoIcon = `<a href="${ep.url}" target="_blank" class="video-icon hbomax-icon" onclick="event.stopPropagation();">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968611.png" class="icon" alt="HBO Max">
+                          </a>`;
+        }
+
+        // ===== NOVO: processar sub_title como árvore com ├ e └
+        let subTreeHtml = "";
+        if(ep.sub_title){
+            const items = ep.sub_title.split("/").map(s => s.trim());
+            subTreeHtml = `<div class="sub-tree"><br>`;
+            items.forEach((item, index) => {
+                const prefix = (index === items.length - 1) ? "└" : "├ ";
+                subTreeHtml += `<div class="sub-item">${prefix}${item}</div>`;
+            });
+            subTreeHtml += `</div>`;
+        }
+
+        html += `
+        <div class="card" onclick="openPlayer('${ep.source}', '${ep.id || ''}', '${ep.url || ''}', ${i})">
+
+            <div class="thumb">
+                <img src="${safeThumb}">
+                <div class="play">${icon}</div>
+            </div>
+
+            <div class="info">
+                <div class="title">${start + i}. ${safeTitle}</div>
+                <div class="meta">${formatDate(ep.release_date)} • ${formatDuration(ep.duration)}</div>
+                ${subTreeHtml} <!-- Sub-títulos aqui -->
+                <div class="icons">
+                    ${lock} 
+                    ${videoIcon}
+                </div>
+            </div>
+
+        </div>`;
+    });
+
+    html += `</div>`;
+    document.getElementById("episodes").innerHTML = html;
+
+}
+
+function renderByDate(){
+
+    let all = [];
+
+    Object.values(DATA[currentSerie] || {}).forEach(arr => {
+        all = all.concat(arr);
+    });
+
+    all.sort((a,b) => new Date(a.release_date) - new Date(b.release_date));
+
+    currentList = all;
+    renderEpisodes(all, 1);
+}
+
+function setFilter(m){
+    filterMode = m;
+    renderSeasons();
+}
+
+function openPlayer(source,id,url,index=0){
+
+    currentIndex = index;
+
+    const player = document.getElementById("player");
+    const title = document.getElementById("videoTitle");
+
+    const ep = currentList[currentIndex];
+
+    if(ep){
+        title.innerText = ep.title; // <- ISSO aqui resolve o “CARREGANDO...”
+    }else{
+        title.innerText = "SEM TÍTULO";
+    }
+
+    // 🔽 NOVA LÓGICA
+    if(source === "youtube" && id){
+        player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+        document.getElementById("modal").style.display = "flex";
+
+    }else if(url){
+        // 👉 Para links como HBO, Netflix, etc:
+        window.open(url, "_blank");
+
+        // ❌ CÓDIGO ANTIGO (mantido comentado)
+        // player.src = url;
+        // document.getElementById("modal").style.display = "flex";
+
+    }else{
+        player.src = "";
+    }
+}
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("player").src = "";
+}
+
+function prevVideo(){
+    if(currentIndex > 0){
+        currentIndex--; // Decrementa o índice
+        openPlayer(currentList[currentIndex].source, currentList[currentIndex].id, currentList[currentIndex].url, currentIndex);
+    }
+}
+
+function nextVideo(){
+    if(currentIndex < currentList.length - 1){
+        currentIndex++; // Incrementa o índice
+        openPlayer(currentList[currentIndex].source, currentList[currentIndex].id, currentList[currentIndex].url, currentIndex);
+    }
+}
+</script>
+</body>
+</html>
