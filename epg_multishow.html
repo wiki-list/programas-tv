@@ -548,12 +548,12 @@
 
       //const baseDate = new Date("2025-08-04");
       const baseDate = new Date();
-      baseDate.setDate(baseDate.getDate() - 8);
+      baseDate.setDate(baseDate.getDate() - 15);
 
       const today = new Date();
       const diffDays = Math.floor((today - baseDate) / (1000 * 60 * 60 * 24));
 
-      for (let offset = 0; offset <= diffDays + 21; offset++) {
+      for (let offset = 0; offset <= diffDays + 18; offset++) {
         const d = new Date(baseDate);
         d.setDate(baseDate.getDate() + offset);
 
@@ -689,18 +689,37 @@ async function fetchData() {
           const episodeTitle = getEpisodeTitle(schedule.title, epNum) || '';
           const fullTitle = `${schedule.title} - D${String(schedule.seasonNumber || '').padStart(2, '0')}:E${String(epNum || '').padStart(2, '0')} - ${episodeTitle}`;
 
-          let color = "orange"; // padrão
-          if (Number.isFinite(epNum)) {
-            const jaExibido = todosEps.some(e =>
-              e.title === schedule.title &&
-              e.num === epNum &&
-              e.startTime < schedule.startTime
+          let color = "gold"; // padrão = reprise
+          
+          const diaSemana = inicio.getDay(); 
+          // 0=domingo, 1=segunda ... 5=sexta, 6=sábado
+          
+          const ehDiaUtil = diaSemana >= 1 && diaSemana <= 5;
+          
+          if (ehDiaUtil) {
+          
+            // episódios do MESMO DIA
+            const episodiosDoDia = schedules.filter(s => {
+              const d = new Date(s.startTime * 1000);
+          
+              return d.toDateString() === inicio.toDateString();
+            });
+          
+            // ordena por horário
+            episodiosDoDia.sort((a, b) => a.startTime - b.startTime);
+          
+            // pega apenas os 2 últimos do dia
+            const ultimosDois = episodiosDoDia.slice(-2);
+          
+            // verifica se o atual está entre os 2 últimos
+            const ehInedito = ultimosDois.some(s =>
+              s.startTime === schedule.startTime
             );
-
-            if (jaExibido) {
-              color = "gold"; // reprise
-            } else {
-              color = schedule.title === "Chaves" ? "green" : "red";
+          
+            if (ehInedito) {
+              color = schedule.title === "Chaves"
+                ? "green"
+                : "red";
             }
           }
 
