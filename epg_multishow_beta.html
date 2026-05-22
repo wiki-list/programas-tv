@@ -603,15 +603,6 @@
         const content = document.getElementById('content');
         content.innerHTML = `
         <div class="program-card error-box">
-          <p style="color:red; font-weight:bold;">
-            ⚠️ O navegador bloqueou o acesso à API do EPG (CORS).
-          </p>
-          <p>
-            Ative a extensão 
-            <a href="https://chrome.google.com/webstore/detail/lhobafahddgcelffkeicbaginigeejlf" target="_blank">
-              Habilitar CORS
-            </a> no Chrome.
-          </p>
           <p><em>Erro técnico original: ${error.message}</em></p>
         </div>`;
       }
@@ -745,7 +736,7 @@
         const aviso = document.createElement("div");
         aviso.style.textAlign = "center";
         aviso.style.color = "#007bff";
-        aviso.innerHTML = "* NOTA: O Canal costuma alterar o nome do episódio até a data de exibição.<br><br><font color='red'>Esta página é a versão BETA e possui lerdeza!</font><br><a href='https://wiki-list.github.io/programas-tv/epg_multishow.html' style='color:#007bff; font-weight:bold; text-decoration:underline;'>Voltar para a versão oficial</a>";
+        aviso.innerHTML = "* NOTA: O Canal costuma alterar o nome do episódio até a data de exibição.";
         dateGroup.appendChild(aviso);
         container.appendChild(dateGroup);
       }
