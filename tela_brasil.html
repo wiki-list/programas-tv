@@ -141,217 +141,187 @@
     </div>
 
     <div class="grid" id="grid-canais"></div>
+<script>
 
-    <script>
+    const canais = [
+        {
+            "name": "Tela Brasil TV",
+            "slug": "tela-brasil-tv",
+            "id": "697bd6b5e2423fac145bcca9",
+            "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/6b0af0a3b_Semnome1200x1100px1.png",
+        },
+        {
+            "name": "Reviva TV",
+            "slug": "revivatv",
+            "id": "697a69367f158c4f8d0e0470",
+            "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/mp/public/6977d51de24ba622b5ba311e/22488e4f9_Designsemnome10.png",
+        },
+        {
+            "name": "Televiva",
+            "slug": "televiva",
+            "id": "6977d6c04b16d8945bcbb1a4",
+            "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/c5100ba3f_InstagramPostDiadasMesminimalistavermelhoebranco1080x1080px1920x1080px.png",
+        },
+        {
+            "name": "Multimix",
+            "slug": "multimix",
+            "id": "6977d6c04b16d8945bcbb1a5",
+            "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/31ebed5f3_ApresentaoInstitucionalGrtis169colorido.jpg",
+        },
+    ];
 
-        const canais = [
-            {
-                "name": "Tela Brasil TV",
-                "slug": "tela-brasil-tv",
-                "id": "697bd6b5e2423fac145bcca9",
-                "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/6b0af0a3b_Semnome1200x1100px1.png",
-            },
-            {
-                "name": "Reviva TV",
-                "slug": "revivatv",
-                "id": "697a69367f158c4f8d0e0470",
-                "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/mp/public/6977d51de24ba622b5ba311e/22488e4f9_Designsemnome10.png",
-            },
-            {
-                "name": "Televiva",
-                "slug": "televiva",
-                "id": "6977d6c04b16d8945bcbb1a4",
-                "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/c5100ba3f_InstagramPostDiadasMesminimalistavermelhoebranco1080x1080px1920x1080px.png",
-            },
-            {
-                "name": "Multimix",
-                "slug": "multimix",
-                "id": "6977d6c04b16d8945bcbb1a5",
-                "logo_url": "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/31ebed5f3_ApresentaoInstitucionalGrtis169colorido.jpg",
-            },
-        ];
+    const url =
+        "https://stream-sync-b5ba311e.base44.app/api/apps/6977d51de24ba622b5ba311e/entities/ProgramSchedule";
 
-        const url =
-            "https://stream-sync-b5ba311e.base44.app/api/apps/6977d51de24ba622b5ba311e/entities/ProgramSchedule";
+    function formatarData(dias = 0) {
+        const d = new Date();
+        d.setDate(d.getDate() + dias);
+        return d.toLocaleDateString('pt-BR');
+    }
 
-        function formatarData(dias = 0) {
+    function calcularDuracao(inicio, fim) {
 
-            const data = new Date();
+        const [h1, m1] = inicio.split(':').map(Number);
+        const [h2, m2] = fim.split(':').map(Number);
 
-            data.setDate(data.getDate() + dias);
+        let start = h1 * 3600 + m1 * 60;
+        let end = h2 * 3600 + m2 * 60;
 
-            return data.toLocaleDateString('pt-BR');
+        if (end < start) end += 86400;
 
-        }
+        let diff = end - start;
 
-        function calcularDuracao(inicio, fim) {
+        return `${String(Math.floor(diff / 3600)).padStart(2,'0')}:${String(Math.floor((diff % 3600)/60)).padStart(2,'0')}:${String(diff % 60).padStart(2,'0')}`;
+    }
 
-            const [h1, m1] = inicio.split(':').map(Number);
-            const [h2, m2] = fim.split(':').map(Number);
+    async function carregarProgramacao() {
 
-            let segundosInicio = h1 * 3600 + m1 * 60;
-            let segundosFim = h2 * 3600 + m2 * 60;
+        const res = await fetch(url);
+        const programas = await res.json();
 
-            if (segundosFim < segundosInicio) {
-                segundosFim += 86400;
-            }
+        const grid = document.getElementById('grid-canais');
 
-            let diferenca = segundosFim - segundosInicio;
+        canais.forEach(canal => {
 
-            let horas =
-                String(Math.floor(diferenca / 3600))
-                .padStart(2, '0');
+            let htmlProgramas = '';
 
-            let minutos =
-                String(Math.floor((diferenca % 3600) / 60))
-                .padStart(2, '0');
+            const agrupados = {};
+            const agora = new Date();
 
-            let segundos =
-                String(diferenca % 60)
-                .padStart(2, '0');
+            // 🔥 AGRUPAR + GERAR REPRISES CORRETAS
+            programas.forEach(p => {
 
-            return `${horas}:${minutos}:${segundos}`;
-        }
+                if (!p.is_active) return;
+                if (p.webtv_id !== canal.id) return;
 
-        async function carregarProgramacao() {
+                const chave = p.program_name;
 
-            const resposta = await fetch(url);
-
-            const programas = await resposta.json();
-
-            const grid =
-                document.getElementById('grid-canais');
-
-            canais.forEach(canal => {
-
-                let htmlProgramas = '';
-
-                // AGRUPAR PROGRAMAS
-                const agrupados = {};
-
-                programas.forEach(p => {
-
-                    if (!p.is_active) return;
-
-                    if (p.webtv_id !== canal.id) return;
-
-                    const chave =
-                        p.program_name;
-
-                    if (!agrupados[chave]) {
-
-                        agrupados[chave] = {
-                            ...p,
-                            reprises: []
-                        };
-
-                    }
-
-                    agrupados[chave].reprises.push({
+                if (!agrupados[chave]) {
+                    agrupados[chave] = {
+                        program_name: p.program_name,
                         start_time: p.start_time,
-                        end_time: p.end_time
-                    });
+                        end_time: p.end_time,
+                        weekdays: p.weekdays,
+                        reprises: []
+                    };
+                }
 
-                });
+                for (let d = 0; d < 7; d++) {
 
-                // RENDERIZAR AGRUPADOS
-                Object.values(agrupados).forEach(p => {
+                    const data = new Date();
+                    data.setDate(data.getDate() + d);
 
-                    const primeiraReprise =
-                        p.reprises[0];
+                    let weekday = data.getDay();
+                    if (weekday === 0) weekday = 7;
 
-                    const duracao =
-                        calcularDuracao(
-                            primeiraReprise.start_time,
-                            primeiraReprise.end_time
-                        );
+                    if ((p.weekdays || []).includes(weekday)) {
 
-                    let reprisesHtml = '';
+                        const [h, m] = p.start_time.split(':');
 
-                    p.reprises.forEach(r => {
+                        const dt = new Date(data);
+                        dt.setHours(+h, +m, 0, 0);
+
+                        // 🔥 SÓ FUTURO
+                        if (dt.getTime() > agora.getTime()) {
+
+                            agrupados[chave].reprises.push({
+                                date: data.toLocaleDateString('pt-BR'),
+                                start: p.start_time,
+                                end: p.end_time,
+                                time: dt.getTime() // 🔥 FIX ORDEM REAL
+                            });
+
+                        }
+                    }
+                }
+
+            });
+
+            // 🔥 RENDER
+            Object.values(agrupados).forEach(p => {
+
+                let reprisesHtml = '';
+
+                p.reprises
+                    .sort((a,b) => a.time - b.time)
+                    .forEach(r => {
 
                         reprisesHtml += `
                             <div class="tag">
-                                📺 ${formatarData()}
-                                às
-                                ${r.start_time}
-                                -
-                                ${r.end_time}
+                                📺 ${r.date} às ${r.start} - ${r.end}
                             </div>
                         `;
-
                     });
 
-                    htmlProgramas += `
+                htmlProgramas += `
+                    <div class="programa">
 
-                        <div class="programa">
+                        <h4>${p.program_name}</h4>
 
-                            <h4>
-                                ${p.program_name}
-                            </h4>
+                        <div class="horario">
+                            ${formatarData()}
+                            ${p.start_time}
+                            -
+                            ${p.end_time}
+                        </div>
 
-                            <div class="horario">
-
-                                ${formatarData()}
-                                ${primeiraReprise.start_time}
-                                -
-                                ${primeiraReprise.end_time}
-
-                                (${duracao})
-
-                            </div>
-
+                        ${p.reprises.length > 0 ? `
                             <div class="reprises-label">
                                 Reprises
                             </div>
 
                             <div class="reprises">
-
                                 ${reprisesHtml}
-
                             </div>
-
-                        </div>
-
-                    `;
-
-                });
-
-                grid.innerHTML += `
-
-                    <div class="canal">
-
-                        <div class="topo">
-
-                            <img
-                                src="${canal.logo_url}"
-                                alt=""
-                            >
-
-                            <h2>
-                                ${canal.name}
-                            </h2>
-
-                        </div>
-
-                        <div class="programas">
-
-                            ${htmlProgramas}
-
-                        </div>
+                        ` : ''}
 
                     </div>
-
                 `;
 
             });
 
-        }
+            grid.innerHTML += `
+                <div class="canal">
 
-        carregarProgramacao();
+                    <div class="topo">
+                        <img src="${canal.logo_url}">
+                        <h2>${canal.name}</h2>
+                    </div>
 
-    </script>
+                    <div class="programas">
+                        ${htmlProgramas}
+                    </div>
 
+                </div>
+            `;
+
+        });
+
+    }
+
+    carregarProgramacao();
+
+</script>
 </body>
 
 </html>
