@@ -279,10 +279,9 @@
                         <h4>${p.program_name}</h4>
 
                         <div class="horario">
-                            ${formatarData()}
-                            ${p.start_time}
-                            -
-                            ${p.end_time}
+                            ${formatarData()} 
+                            ${p.start_time} - ${p.end_time} 
+                            (${calcularDuracao(p.start_time, p.end_time)})
                         </div>
 
                         ${p.reprises.length > 0 ? `
