@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Programação TelaBrasilTV</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top, #1f2937, #0f172a 60%);
+            font-family: Arial, sans-serif;
+            color: white;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .titulo {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .canal {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+
+        .canal:hover {
+            transform: translateY(-5px);
+        }
+
+        .topo {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .topo img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            background: white;
+            padding: 5px;
+        }
+
+        .topo h2 {
+            font-size: 24px;
+        }
+
+        .programas {
+            padding: 20px;
+        }
+
+        .programa {
+            background: rgba(255,255,255,0.06);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 18px;
+            border-left: 5px solid #60a5fa;
+        }
+
+        .programa h4 {
+            font-size: 19px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .horario {
+            font-size: 15px;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .reprises {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tag {
+            background: rgba(96,165,250,0.15);
+            border: 1px solid rgba(96,165,250,0.4);
+            padding: 8px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #bfdbfe;
+        }
+
+        @media(max-width:1400px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:800px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="titulo">
+        PAINEL DE PROGRAMAÇÃO TELA BRASIL TV
+    </div>
+
+    <div class="grid" id="grid-canais"></div>
+
+    <script>
+
+        const canais = [
+            {
+                name: "Tela Brasil TV",
+                slug: "tela-brasil-tv",
+                id: "697bd6b5e2423fac145bcca9",
+                logo_url: "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/6b0af0a3b_Semnome1200x1100px1.png",
+            },
+            {
+                name: "Reviva TV",
+                slug: "revivatv",
+                id: "697a69367f158c4f8d0e0470",
+                logo_url: "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/mp/public/6977d51de24ba622b5ba311e/22488e4f9_Designsemnome10.png",
+            },
+            {
+                name: "Televiva",
+                slug: "televiva",
+                id: "6977d6c04b16d8945bcbb1a4",
+                logo_url: "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/c5100ba3f_InstagramPostDiadasMesminimalistavermelhoebranco1080x1080px1920x1080px.png",
+            },
+            {
+                name: "Multimix",
+                slug: "multimix",
+                id: "6977d6c04b16d8945bcbb1a5",
+                logo_url: "https://base44.app/api/apps/6977d51de24ba622b5ba311e/files/public/6977d51de24ba622b5ba311e/31ebed5f3_ApresentaoInstitucionalGrtis169colorido.jpg",
+            },
+        ];
+
+        const url = "https://stream-sync-b5ba311e.base44.app/api/apps/6977d51de24ba622b5ba311e/entities/ProgramSchedule";
+
+        const diasSemana = [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Sábado"
+        ];
+
+        function calcularDuracao(inicio, fim) {
+
+            const [h1, m1] = inicio.split(':').map(Number);
+            const [h2, m2] = fim.split(':').map(Number);
+
+            let segundosInicio = h1 * 3600 + m1 * 60;
+            let segundosFim = h2 * 3600 + m2 * 60;
+
+            if (segundosFim < segundosInicio) {
+                segundosFim += 86400;
+            }
+
+            let diferenca = segundosFim - segundosInicio;
+
+            let horas = String(Math.floor(diferenca / 3600)).padStart(2, '0');
+            let minutos = String(Math.floor((diferenca % 3600) / 60)).padStart(2, '0');
+            let segundos = String(diferenca % 60).padStart(2, '0');
+
+            return `${horas}:${minutos}:${segundos}`;
+        }
+
+        function formatarData(dias = 0) {
+
+            const data = new Date();
+
+            data.setDate(data.getDate() + dias);
+
+            return data.toLocaleDateString('pt-BR');
+        }
+
+        async function carregarProgramacao() {
+
+            const resposta = await fetch(url);
+
+            const programas = await resposta.json();
+
+            const grid = document.getElementById('grid-canais');
+
+            canais.forEach(canal => {
+
+                let htmlProgramas = '';
+
+                programas.forEach(p => {
+
+                    if (!p.is_active) return;
+
+                    if (p.webtv_id !== canal.id) return;
+
+                    const duracao =
+                        calcularDuracao(
+                            p.start_time,
+                            p.end_time
+                        );
+
+                    let reprises = '';
+
+                    for (let d = 0; d < 7; d++) {
+
+                        const hoje = new Date();
+
+                        hoje.setDate(hoje.getDate() + d);
+
+                        let weekday = hoje.getDay();
+
+                        if (weekday === 0) {
+                            weekday = 7;
+                        }
+
+                        if ((p.weekdays || []).includes(weekday)) {
+
+                            reprises += `
+                                <div class="tag">
+                                    📺 ${formatarData(d)} às ${p.start_time}
+                                </div>
+                            `;
+                        }
+                    }
+
+                    htmlProgramas += `
+                        <div class="programa">
+
+                            <h4>
+                                ${p.program_name}
+                            </h4>
+
+                            <div class="horario">
+                                ${formatarData()}
+                                ${p.start_time}
+                                -
+                                ${p.end_time}
+                                (${duracao})
+                            </div>
+
+                            <div class="reprises">
+                                ${reprises}
+                            </div>
+
+                        </div>
+                    `;
+                });
+
+                grid.innerHTML += `
+                    <div class="canal">
+
+                        <div class="topo">
+
+                            <img src="${canal.logo_url}" alt="">
+
+                            <h2>${canal.name}</h2>
+
+                        </div>
+
+                        <div class="programas">
+
+                            ${htmlProgramas}
+
+                        </div>
+
+                    </div>
+                `;
+            });
+        }
+
+        carregarProgramacao();
+
+    </script>
+
+</body>
+
+</html>
