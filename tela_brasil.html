@@ -242,7 +242,7 @@
                         dt.setHours(+h, +m, 0, 0);
 
                         // 🔥 SÓ FUTURO
-                        if (dt.getTime() > agora.getTime()) {
+                        // if (dt.getTime() > agora.getTime()) {
 
                             agrupados[chave].reprises.push({
                                 date: data.toLocaleDateString('pt-BR'),
@@ -251,7 +251,7 @@
                                 time: dt.getTime() // 🔥 FIX ORDEM REAL
                             });
 
-                        }
+                        // }
                     }
                 }
 
