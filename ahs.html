@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player de mídia</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.16.0/shaka-player.compiled.js"></script>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #101216; color: #f3f5f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px 16px; }
+    main { width: min(100%, 1000px); margin: auto; }
+    h1 { margin: 0 0 18px; font-size: 1.6rem; }
+    .card { background: #191d24; border: 1px solid #2b313c; border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+    label { display: block; margin: 12px 0 6px; font-weight: 650; }
+    input, textarea, select { width: 100%; border: 1px solid #394250; border-radius: 7px; background: #10141a; color: inherit; padding: 10px 11px; font: inherit; }
+    textarea { min-height: 88px; resize: vertical; font-family: ui-monospace, monospace; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .buttons { display: flex; gap: 9px; margin-top: 15px; }
+    button { border: 0; border-radius: 7px; padding: 10px 16px; background: #3478f6; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+    button.secondary { background: #414956; }
+    button:disabled, select:disabled { opacity: .55; cursor: not-allowed; }
+    #status { min-height: 1.5em; color: #bdc6d2; margin: 12px 0 0; white-space: pre-wrap; }
+    video { display: block; width: 100%; max-height: 68vh; background: black; border-radius: 10px; }
+    .hint { color: #9da8b7; font-size: .88rem; margin: 5px 0 0; }
+    @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } body { padding: 16px 10px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1 id="pageTitle">Player de mídia</h1>
+  <p id="episodeInfo" class="hint" hidden></p>
+  <p><a id="backToSeason" href="/" hidden>‹ Voltar à temporada</a></p>
+  <section class="card" aria-label="Fonte e reprodução">
+    <label for="manifest">URL do manifest</label>
+    <input id="manifest" type="url" placeholder="https://servidor.com/manifest.mpd" autocomplete="url">
+    <label for="headers">Headers HTTP <span class="hint">um por linha: Nome: valor</span></label>
+    <textarea id="headers" placeholder="Authorization: Bearer …&#10;Referer: https://exemplo.com/"></textarea>
+	<label for="keys">Episódio</label>
+	<select id="keys">
+	  <option value="">Selecione o episódio</option>
+
+	  <option value="1bb326bdd3484f00a8a33d801a5c8c93:2f7d4e6d305909a595f7fa89c6b76b17
+	3958c070eeea436584c91c7166087132:392c247d11927b2f7c30ad679a560878">
+		AHS T13 E1: 13
+	  </option>
+	  
+	<option value="a68ca3bae8bf4f28bf18ce57cb8d1baa:9cb677c8d3a5834f8ad9670f23a322c2
+	0020cfa2776d4bafa8333b3346a1a844:df896d61c7718f652c87da4bf9533eda">
+	  AHS T13 E2: 1:13 AM
+	</option>
+
+	<option value="5c763810882b42638d56f87757bbc2f3:73a7fcd4f2400613dfe26b9684e736c4
+	90512c46938140f98fcd7c5b16344aad:de99352b9bb0d3a3859ceb3121fbc47f">
+	  AHS T13 E3: Rauhnacht
+	</option>
+
+	<option value="b52baa2c7619418f8aa2fcf9aa8ecd04:a5ca6ef0eb55457a065a6b41c145fe5b
+	7ea9066a4b0d425181473ff7b5e204c9:dda183e0825e1d52c72e6d4498ee28c8">
+	  AHS T13 E4: E Só Isso Que Há?
+	</option>
+
+	<option value="92a9e88649b346e7b24bd41c6c58050a:1baa0d97669019c569269ca11cf9860e
+	e62fd0b0bfdf43468680d1dfa8c569a5:86f1cba57c9860a8ac7c7ab2b2036b9c">
+	  AHS T13 E5: Noite de Encontro
+	</option>
+
+	<option value="02ae4150b0c149a3be8f3ff5ede063c1:29f2986b60335cc1a0ff4d8aa09dd101
+	d4ca505eb3e14e1fb2a56a24611e0df9:42570788802f33cf02d40136778561a0">
+	  AHS T13 E6: O Retorno da Noite do Diabo
+	</option>
+
+	</select>
+    <div class="buttons">
+      <button id="playButton" type="button">Reproduzir</button>
+      <button id="stopButton" class="secondary" type="button">Parar</button>
+    </div>
+    <p id="status" role="status" aria-live="polite">Inicializando Shaka Player…</p>
+  </section>
+
+  <video id="video" controls playsinline></video>
+
+  <section class="card" aria-label="Faixas">
+    <div class="grid">
+      <div><label for="audioTrack">Áudio</label><select id="audioTrack" disabled><option>Carregue um manifest</option></select></div>
+      <div><label for="textTrack">Legendas</label><select id="textTrack" disabled><option>Carregue um manifest</option></select></div>
+      <div><label for="videoTrack">Qualidade do vídeo</label><select id="videoTrack" disabled><option>Carregue um manifest</option></select></div>
+    </div>
+    <p class="hint">As opções dependem das faixas disponíveis no manifest. “Automática” deixa o Shaka escolher a qualidade conforme a conexão.</p>
+  </section>
+</main>
+<script>
+  'use strict';
+  let player = null;
+  const $ = (id) => document.getElementById(id);
+  const status = (message) => { $('status').textContent = message; };
+
+  function parseHeaders() {
+    const result = {};
+    $('headers').value.split(/\r?\n/).forEach((raw, index) => {
+      const line = raw.trim();
+      if (!line) return;
+      const split = line.indexOf(':');
+      if (split <= 0) throw new Error(`Header inválido na linha ${index + 1}.`);
+      const name = line.slice(0, split).trim();
+      const value = line.slice(split + 1).trim();
+      if (!name || !value) throw new Error(`Header inválido na linha ${index + 1}.`);
+      result[name] = value;
+    });
+    return result;
+  }
+
+  function parseClearKeys(value) {
+    const keys = {};
+    value.replace(/--key\s+/gi, '\n').split(/\r?\n/).forEach((raw, index) => {
+      const line = raw.trim().replace(/^--key\s+/i, '');
+      if (!line) return;
+      const split = line.indexOf(':');
+      if (split <= 0) throw new Error(`KID:KEY inválido na linha ${index + 1}.`);
+      const kid = line.slice(0, split).replace(/-/g, '').trim().toLowerCase();
+      const key = line.slice(split + 1).replace(/-/g, '').trim().toLowerCase();
+      if (!/^[0-9a-f]{32}$/.test(kid)) throw new Error(`KID inválido na linha ${index + 1}; use 32 caracteres hexadecimais.`);
+      if (!/^[0-9a-f]{32}$/.test(key)) throw new Error(`KEY inválida na linha ${index + 1}; use 32 caracteres hexadecimais.`);
+      keys[kid] = key;
+    });
+    return keys;
+  }
+
+  const LANGUAGE_NAMES = {
+    eng: 'English', en: 'English', por: 'Portuguese', pt: 'Portuguese', spa: 'Spanish', es: 'Spanish',
+    jpn: 'Japanese', ja: 'Japanese', fra: 'French', fre: 'French', fr: 'French', deu: 'German', ger: 'German', de: 'German',
+    ita: 'Italian', it: 'Italian', kor: 'Korean', ko: 'Korean', zho: 'Chinese', chi: 'Chinese', zh: 'Chinese',
+    rus: 'Russian', ru: 'Russian', und: 'Sem idioma', ces: 'Czech', cze: 'Czech', cs: 'Czech', pol: 'Polish', pl: 'Polish',
+    tur: 'Turkish', tr: 'Turkish', ara: 'Arabic', ar: 'Arabic', hrv: 'Croatian', hr: 'Croatian', dan: 'Danish', da: 'Danish',
+    nld: 'Dutch', dut: 'Dutch', nl: 'Dutch', fin: 'Finnish', fi: 'Finnish', ell: 'Greek', gre: 'Greek', el: 'Greek',
+    heb: 'Hebrew', he: 'Hebrew', hun: 'Hungarian', hu: 'Hungarian', ind: 'Indonesian', id: 'Indonesian',
+    msa: 'Malay', may: 'Malay', ms: 'Malay', nor: 'Norwegian', no: 'Norwegian', ron: 'Romanian', rum: 'Romanian', ro: 'Romanian',
+    slk: 'Slovak', slo: 'Slovak', sk: 'Slovak', swe: 'Swedish', sv: 'Swedish', tha: 'Thai', th: 'Thai',
+    fin: 'Finnish', fas: 'Persian', per: 'Persian', fa: 'Persian', hin: 'Hindi', hi: 'Hindi', ukr: 'Ukrainian', uk: 'Ukrainian',
+    vie: 'Vietnamese', vi: 'Vietnamese', ben: 'Bengali', bn: 'Bengali', bul: 'Bulgarian', bg: 'Bulgarian',
+    srp: 'Serbian', sr: 'Serbian', slv: 'Slovenian', sl: 'Slovenian', cat: 'Catalan', ca: 'Catalan'
+  };
+
+  function languageName(code) {
+    if (!code || String(code).toLowerCase() === 'und') return 'Sem idioma';
+    const normalized = String(code).trim().replaceAll('_', '-');
+    const parts = normalized.split('-');
+    const base = parts[0].toLowerCase();
+    const knownName = LANGUAGE_NAMES[base] || LANGUAGE_NAMES[normalized.toLowerCase()];
+    const region = parts.slice(1).join('-').toLowerCase();
+    if (base === 'pt' && (region === 'br' || region === 'pt')) return region === 'br' ? 'Portuguese (Brazil)' : 'Portuguese (Portugal)';
+    if (base === 'es' && (region === '419' || region === 'mx' || region === 'ar')) return region === '419' ? 'Spanish (Latin America)' : `Spanish (${region.toUpperCase()})`;
+    if (base === 'zh' && region === 'hant') return 'Chinese (Traditional)';
+    if (base === 'zh' && region === 'hans') return 'Chinese (Simplified)';
+    if (knownName) return knownName;
+    try { return new Intl.DisplayNames(['en'], { type: 'language' }).of(normalized) || normalized; }
+    catch { return normalized; }
+  }
+
+  function trackLabel(track, type) {
+    const raw = `${track.label || ''} ${track.kind || ''} ${(track.roles || []).join(' ')} ${track.accessibilityPurpose || ''}`.toLowerCase();
+    const markers = [];
+    if (type === 'audio') {
+      if (/audio description|describes-video|narration|descriptive/.test(raw)) markers.push('[AD]');
+    } else {
+      if (track.forced || /forced/.test(raw)) markers.push('[FORCED]');
+      if (/sdh|describes-music-and-sound|hearing.impaired/.test(raw)) markers.push('[SDH]');
+      else if (/\bcc\b|closed.caption|caption/.test(raw)) markers.push('[CC]');
+    }
+    return `${languageName(track.language)}${markers.length ? ` ${markers.join(' ')}` : ''}`;
+  }
+
+  function setOptions(select, entries, selectedId, placeholder) {
+    select.replaceChildren();
+    if (!entries.length) {
+      select.add(new Option(placeholder, ''));
+      select.disabled = true;
+      return;
+    }
+    entries.forEach((entry) => select.add(new Option(entry.label, String(entry.id))));
+    select.disabled = false;
+    if (selectedId != null && entries.some((entry) => String(entry.id) === String(selectedId))) select.value = String(selectedId);
+  }
+
+  function refreshTracks() {
+    if (!player) return;
+    const audios = player.getAudioTracks();
+    const activeAudio = audios.find((track) => track.active);
+    const activeAudioIndex = audios.findIndex((track) => track.active);
+    setOptions($('audioTrack'), audios.map((track, index) => ({
+      // Use the list position instead of Shaka's track ID: some manifests or
+      // browser-backed tracks may expose missing/non-unique IDs.
+      id: index,
+      label: `${index + 1}. ${trackLabel(track, 'audio')}${track.channelsCount ? ` · ${track.channelsCount} canais` : ''}${track.codecs ? ` · ${track.codecs}` : ''}`
+    })), activeAudioIndex >= 0 ? activeAudioIndex : null, 'Sem faixas de áudio');
+
+    const texts = player.getTextTracks();
+    const activeText = texts.find((track) => track.active);
+    const textSelect = $('textTrack');
+    textSelect.replaceChildren(new Option('Desativadas', 'off'));
+    texts.forEach((track) => textSelect.add(new Option(
+      trackLabel(track, 'text'),
+      String(track.id)
+    )));
+    textSelect.disabled = false;
+    textSelect.value = activeText ? String(activeText.id) : 'off';
+
+    // getVariantTracks() returns flattened track objects (height/videoId), not
+    // the internal variant objects with a nested `video` stream.
+    const variants = player.getVariantTracks().filter((track) => track.height);
+    const heights = [...new Set(variants.map((track) => track.height))].sort((a, b) => b - a);
+    const activeVariant = variants.find((track) => track.active);
+    const videoSelect = $('videoTrack');
+    videoSelect.replaceChildren(new Option('Automática', 'auto'));
+    heights.forEach((height) => videoSelect.add(new Option(`${height}p`, String(height))));
+    videoSelect.disabled = heights.length === 0;
+    videoSelect.value = 'auto';
+    if (activeVariant && player.getConfiguration().abr.enabled === false) videoSelect.value = String(activeVariant.height);
+  }
+
+	function limparUrlManifest(url) {
+	  const pos = url.indexOf('.m3u8');
+	  return pos >= 0 ? url.slice(0, pos + 5) : url;
+	}
+
+  async function play() {
+	const manifest = limparUrlManifest($('manifest').value.trim());
+	$('manifest').value = manifest;
+    if (!manifest) { status('Informe a URL do manifest.'); return; }
+    $('playButton').disabled = true;
+    try {
+      if (!shaka.Player.isBrowserSupported()) throw new Error('Este navegador não suporta Shaka Player.');
+      if (player) { await player.destroy(); player = null; }
+      const video = $('video');
+      player = new shaka.Player(video);
+      const headers = parseHeaders();
+      if (Object.keys(headers).length) player.getNetworkingEngine().registerRequestFilter((type, request) => Object.assign(request.headers, headers));
+      const clearKeys = parseClearKeys($('keys').value);
+      if (Object.keys(clearKeys).length) player.configure({ drm: { clearKeys } });
+      player.addEventListener('error', (event) => status(`Erro do player: ${event.detail?.message || event.detail?.code || 'falha de reprodução'}`));
+      player.addEventListener('trackschanged', refreshTracks);
+      player.addEventListener('audiotrackschanged', refreshTracks);
+      player.addEventListener('audiotrackchanged', () => {
+        refreshTracks();
+        const active = player?.getAudioTracks().find((track) => track.active);
+        if (active) status(`Áudio ativo: ${active.label || languageName(active.language)}${active.channelsCount ? ` · ${active.channelsCount} canais` : ''}.`);
+      });
+      status('Carregando manifest…');
+      await player.load(manifest);
+      refreshTracks();
+      status('Manifest carregado.');
+      try { await video.play(); status('Reprodução iniciada.'); }
+      catch { status('Manifest carregado. Clique em Play no vídeo para iniciar.'); }
+    } catch (error) {
+      console.error(error);
+      status(`Erro: ${error.message || String(error)}`);
+    } finally { $('playButton').disabled = false; }
+  }
+
+  async function stop() {
+    if (player) { await player.destroy(); player = null; }
+    const video = $('video');
+    video.removeAttribute('src');
+    video.load();
+    for (const id of ['audioTrack', 'textTrack', 'videoTrack']) {
+      $(id).replaceChildren(new Option('Carregue um manifest', ''));
+      $(id).disabled = true;
+    }
+    status('Reprodução parada.');
+  }
+
+  $('audioTrack').addEventListener('change', () => {
+    const audioTracks = player?.getAudioTracks() || [];
+    const track = audioTracks[Number($('audioTrack').value)];
+    if (!track) return;
+    status(`Trocando para ${track.label || languageName(track.language)}…`);
+    try {
+      const variants = player.getVariantTracks();
+      const currentVariant = variants.find((item) => item.active);
+      // Pick the exact audio/video combination advertised by the manifest. This
+      // forces a real stream switch while keeping the current video rendition
+      // whenever that rendition exists with the requested audio.
+      const matchingVariants = variants.filter((item) => item.audioId != null && item.audioId === track.id);
+      const chosen = matchingVariants.find((item) => item.videoId === currentVariant?.videoId) ||
+        matchingVariants.sort((a, b) => Math.abs((a.height || 0) - (currentVariant?.height || 0)) - Math.abs((b.height || 0) - (currentVariant?.height || 0)))[0];
+      if (chosen) {
+        player.selectVariantTrack(chosen, true);
+      } else {
+        // Some manifest types expose audio tracks without a matching variant id.
+        player.selectAudioTrack(track);
+      }
+      status(`Solicitada a troca de áudio para ${track.label || languageName(track.language)}. Aguarde a mudança no player.`);
+      window.setTimeout(() => {
+        if (!player) return;
+        const activeAudio = player.getAudioTracks().find((item) => item.active);
+        refreshTracks();
+        if (activeAudio && (activeAudio.id === track.id || activeAudio.language === track.language && activeAudio.label === track.label && activeAudio.codecs === track.codecs)) {
+          status(`Faixa ativa: ${activeAudio.label || languageName(activeAudio.language)}${activeAudio.channelsCount ? ` · ${activeAudio.channelsCount} canais` : ''}.`);
+        } else {
+          status(`O player manteve a faixa anterior. O manifest ou o navegador pode não permitir a troca para essa faixa nesse ponto.`);
+        }
+      }, 1600);
+    } catch (error) {
+      refreshTracks();
+      status(`Não foi possível trocar o áudio: ${error.message || String(error)}`);
+    }
+  });
+  $('textTrack').addEventListener('change', () => {
+    if (!player) return;
+    if ($('textTrack').value === 'off') player.setTextTrackVisibility(false);
+    else {
+      const track = player.getTextTracks().find((item) => String(item.id) === $('textTrack').value);
+      if (track) { player.selectTextTrack(track); player.setTextTrackVisibility(true); }
+    }
+    refreshTracks();
+  });
+  $('videoTrack').addEventListener('change', () => {
+    if (!player) return;
+    const quality = $('videoTrack').value;
+    if (quality === 'auto') player.configure({ abr: { enabled: true } });
+    else {
+      player.configure({ abr: { enabled: false } });
+      const matching = player.getVariantTracks().filter((track) => track.height === Number(quality));
+      const currentAudio = player.getAudioTracks().find((track) => track.active);
+      const chosen = matching.find((track) => track.audioId === currentAudio?.id) || matching[0];
+      if (chosen) player.selectVariantTrack(chosen, true);
+    }
+    refreshTracks();
+  });
+  $('playButton').addEventListener('click', play);
+  $('stopButton').addEventListener('click', stop);
+  document.addEventListener('DOMContentLoaded', () => {
+    shaka.polyfill.installAll();
+    status(shaka.Player.isBrowserSupported() ? 'Shaka Player pronto.' : 'Este navegador não suporta Shaka Player.');
+  });
+  const params = new URLSearchParams(window.location.search);
+  const initialManifest = params.get('manifest');
+  const videoId = params.get('video');
+  const playerContext = (() => {
+    try { return JSON.parse(sessionStorage.getItem('ahs-player-context') || '{}'); }
+    catch { return {}; }
+  })();
+  if (videoId) {
+    const back = $('backToSeason');
+    const returnParams = new URLSearchParams();
+    if (params.has('series')) returnParams.set('series', params.get('series'));
+    if (params.has('season')) returnParams.set('season', params.get('season'));
+    back.href = returnParams.toString() ? `/?${returnParams}` : '/';
+    back.hidden = false;
+    const episode = (playerContext.episodes || []).find((item) => item.id === videoId);
+    const heading = episode?.title || 'Episódio';
+    $('pageTitle').textContent = heading;
+    $('episodeInfo').textContent = [playerContext.series, episode?.code].filter(Boolean).join(' · ');
+    $('episodeInfo').hidden = !$('episodeInfo').textContent;
+    status('Buscando o manifest…');
+    fetch(`/api/player/${encodeURIComponent(videoId)}/manifest`, { credentials: 'same-origin' })
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || `Falha HTTP ${response.status}`);
+        if (!data.url) throw new Error('A API não retornou a URL do manifest.');
+        $('manifest').value = data.url;
+        return play();
+      })
+      .catch((error) => status(`Não foi possível preparar o vídeo: ${error.message || String(error)}`));
+  }
+  if (initialManifest) {
+    manifest.value = initialManifest;
+    const startPlayback = () => window.setTimeout(() => play(), 0);
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startPlayback, { once: true });
+    else startPlayback();
+  }
+</script>
+</body>
+</html>
